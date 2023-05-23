@@ -1,13 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: Rubik;
+    font-weight: 400;
+    src: url('./assets/fonts/Rubik/Rubik-Regular.ttf') format("ttf");
+  }
+
+  @font-face {
+    font-family: Rubik;
+    font-weight: 500;
+    src: url('./assets/fonts/Rubik/Rubik-Medium.ttf') format("ttf");
+  }
+
+  @font-face {
+    font-family: Rubik;
+    font-weight: 600;
+    src: url('./assets/fonts/Rubik/Rubik-SemiBold.ttf') format("ttf");
+  }
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Rubik', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  height: 100%;
 }
 
 code {

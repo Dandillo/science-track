@@ -13,7 +13,8 @@
     },
   },
   rules: {
-    "unicode-bom": ["error", "never"],
+    "unicode-bom": 'off',
+    "react/prop-types": "off",
   },
   settings: {
     react: {
