@@ -4,25 +4,27 @@ import "./index.css";
 import LoginFormPage from "./pages/LoginPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
+import Waiting from "./pages/Waiting/Waiting";
+import NotFound from "./pages/NotFound/NotFound";
+import Test from "./pages/Test";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LoginFormPage />,
-    // children: [
-    //   {
-    //     index: true,
-    //     element: <LoginFormPage />,
-    //   },
-    // ],
-    // children: [
-    //   {
-    //     path: "game",
-    //     element: <div>Game</div>,
-    //     // loader: teamLoader,
-    //   },
-    // ],
   },
+  {
+    path: "/waiting",
+    element: <Waiting />,
+  },
+  {
+    path: "/test",
+    element: <Test />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
+  }
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

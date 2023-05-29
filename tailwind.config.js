@@ -14,6 +14,14 @@ module.exports = {
         grayColor: "#727272",
         lightGrayColor: "#BDBDBD"
       },
+      fontFamily: {
+        'rubik': ['Rubik', 'sans-serif'],
+      },
+      fontWeight: {
+        'regular': 400,
+        'medium': 500,
+        'semi-bold': 600,
+      }
     },
   },
   plugins: [],

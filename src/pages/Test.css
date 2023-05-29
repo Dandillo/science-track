@@ -1,0 +1,33 @@
+.test {
+  width: auto;
+  height: auto;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.btnStyles {
+  border: none;
+  cursor: pointer;
+  background-size: 200% 200%;
+  background-image: linear-gradient(to right, #ff00cc 0%, #333399 51%, #ff00cc 100%);
+  transition: background-size 5s;
+  animation: gradient 5s ease infinite;
+  padding: 10px 20px;
+  color: #fff;
+  outline: none;
+}
+.btnStyles:hover {
+  background-size: 200% 100%;
+}
+.btnStyles.active {
+  border: 2px solid #333;
+}/*# sourceMappingURL=Test.css.map */
