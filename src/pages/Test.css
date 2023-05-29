@@ -7,13 +7,16 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
 }
+
 .btnStyles {
   border: none;
   cursor: pointer;
@@ -25,9 +28,13 @@
   color: #fff;
   outline: none;
 }
+
 .btnStyles:hover {
   background-size: 200% 100%;
 }
+
 .btnStyles.active {
   border: 2px solid #333;
-}/*# sourceMappingURL=Test.css.map */
+}
+
+/*# sourceMappingURL=Test.css.map */

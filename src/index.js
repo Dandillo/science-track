@@ -7,6 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import Waiting from "./pages/Waiting/Waiting";
 import NotFound from "./pages/NotFound/NotFound";
 import Test from "./pages/Test";
+import Game from "./pages/Game";
 
 const router = createBrowserRouter([
   {
@@ -18,13 +19,17 @@ const router = createBrowserRouter([
     element: <Waiting />,
   },
   {
+    path: "/game",
+    element: <Game />,
+  },
+  {
     path: "/test",
     element: <Test />,
   },
   {
     path: "*",
     element: <NotFound />,
-  }
+  },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
