@@ -7,4 +7,12 @@ export default class AuthServices {
         formData.append('password', password);
         return $api.post('/Authorization/Authorize', formData);
     }
+
+    static logout() {
+        return $api.post('/Authorization/Logout');
+    }
+
+    static refresh() {
+        return $api.post('/Authorization/IsAuthorize');
+    }
 }

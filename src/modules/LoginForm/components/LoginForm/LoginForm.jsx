@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../../../../ui/Input";
 import Button from "../../../../ui/Button";
 import { HiArrowLongRight } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux'
-import { setName, setRole, setOffName } from '../../store/UserStore'
+import { setName, setRole, setOffName, setId } from '../../store/UserStore'
 import AuthServices from "../../services/AuthServices";
 
 
@@ -21,9 +21,23 @@ const LoginForm = () => {
       dispatch(setName(response.data.userName));
       dispatch(setOffName(response.data.officialName));
       dispatch(setRole(response.data.role));
+      dispatch(setId(response.data.userId));
       navigate('/waiting');
+    })
+    .catch(() => {
+      console.log('error');
     });
   }
+
+  useEffect(() => {
+    AuthServices.logout()
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((err) => {
+      console.log(err.data);
+    });
+  }, [])
 
   return (
     <div className="bg-white text-grayColor flex flex-col  items-center gap-[64px] 

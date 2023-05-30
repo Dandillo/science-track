@@ -1,11 +1,40 @@
 import React from 'react'
 import WaitingBG from './WaitingBG';
 import logo from '../../../assets/images/Logo.png';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useAuthRedirect } from '../../../hooks/useAuthRedirect';
+import { useNavigate } from 'react-router-dom';
+// import { setIdGame, setGlobalEvent, setLocalEvent, setLocalSolution } from '../../Game/store/GameStore';
+import { setIdGame } from '../../Game/store/GameStore';
+import WaitingService from '../services/WaitingServices';
+
 
 function WaitingForm({connectCount}) {
+    useAuthRedirect();
     const role = useSelector(state => state.user.role);
+    const userId = useSelector(state => state.user.id);
     const userOffName = useSelector(state => state.user.offName);
+    const dispatch = useDispatch();
+    const navigate = useNavigate(null);
+
+    const handleCreateGame = (e) => {
+        e.preventDefault();
+        WaitingService.createGame()
+        .then((response) => {
+            dispatch(setIdGame(response.data.id))
+            WaitingService.addUser(response.data.id, userId)
+            .then(() => {
+                navigate('/game');
+            })
+            .catch(err => {
+                console.log(err);
+            })
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }
+
     connectCount = 23;
   return (
     <WaitingBG>
@@ -27,11 +56,13 @@ function WaitingForm({connectCount}) {
                     className='my-6 w-[180px] h-[6px] bg-orangeColor'
                 />
                 <h1 className='font-bold text-5xl text-[#4B4B4B] mb-6'>Привет, {userOffName}</h1>
-                {role === 'user' ?
+                {role === 'player' ?
                     <p className='text-2xl text-[#4B4B4B]'>Игра скоро начнётся, ты уже ознакомился с правилами? Самое время сделать это сейчас!</p>
                     : 
                     <div className='flex flex-col items-center justify-around h-full w-full'>
-                        <button style={{
+                        <button 
+                            onClick={handleCreateGame}
+                            style={{
                             borderRadius: '16px'
                         }} 
                             className='bg-transparent border-green-500 text-green-500 hover:border-green-700 hover:text-green-700

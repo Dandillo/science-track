@@ -10,11 +10,13 @@ import Test from "./pages/Test";
 import Game from "./pages/Game";
 import { Provider } from 'react-redux'
 import userStore from './modules/LoginForm/store/UserStore';
+import gameStore from "./modules/Game/store/GameStore";
 import { configureStore } from '@reduxjs/toolkit'
 
 export const store = configureStore({
   reducer: {
     user: userStore,
+    game: gameStore
   },
 })
 
