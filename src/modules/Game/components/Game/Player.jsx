@@ -8,7 +8,7 @@ function Player() {
     <div className="flex flex-col h-full items-center ">
       <div className="rounds flex">
         <RoundCircle roundNumber={14} next={false} />
-        <ProgressCircle roundNumber={15} progress={70} />
+        <ProgressCircle roundNumber={15} progress={100} />
         <RoundCircle roundNumber={16} next={true} />
       </div>
       <img src={playerImg} className="block h-[50%]" />

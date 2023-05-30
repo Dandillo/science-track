@@ -1,10 +1,10 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const API_URL = 'https://localhost:7041/api' // set on valid url
+export const API_URL = "http://localhost:5144/api"; // set on valid url
 
 const $api = axios.create({
-    withCredentials: true,
-    baseURL: API_URL,
+  withCredentials: true,
+  baseURL: API_URL,
 });
 
 // $api.interceptors.request.use((config) => {

@@ -20,8 +20,8 @@ const ProgressCircle = ({ roundNumber, progress }) => {
         strokeWidth="7"
         strokeLinecap="round"
         style={{
-          strokeDasharray: "205",
-          strokeDashoffset: `${205 - (progress / 100) * 205}`,
+          strokeDasharray: "360",
+          strokeDashoffset: `${360 - (360 * progress) / 100}`,
           transition: "stroke-dashoffset 0.5s ease",
         }}
       />
@@ -32,8 +32,8 @@ const ProgressCircle = ({ roundNumber, progress }) => {
         textAnchor="middle"
         fontSize="50"
         fill="#ff8b3d"
-              dy="0.1em"
-              dx='-0.1rem'
+        dy="0.1em"
+        dx="-0.1rem"
       >
         {roundNumber}
       </text>
