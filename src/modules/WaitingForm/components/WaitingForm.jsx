@@ -1,9 +1,11 @@
 import React from 'react'
 import WaitingBG from './WaitingBG';
 import logo from '../../../assets/images/Logo.png';
+import { useSelector } from 'react-redux';
 
-function WaitingForm({role, connectCount}) {
-    role = 'admin';
+function WaitingForm({connectCount}) {
+    const role = useSelector(state => state.user.role);
+    const userOffName = useSelector(state => state.user.offName);
     connectCount = 23;
   return (
     <WaitingBG>
@@ -24,7 +26,7 @@ function WaitingForm({role, connectCount}) {
                 }}
                     className='my-6 w-[180px] h-[6px] bg-orangeColor'
                 />
-                <h1 className='font-bold text-5xl text-[#4B4B4B] mb-6'>Привет, Весёлая пчела!</h1>
+                <h1 className='font-bold text-5xl text-[#4B4B4B] mb-6'>Привет, {userOffName}</h1>
                 {role === 'user' ?
                     <p className='text-2xl text-[#4B4B4B]'>Игра скоро начнётся, ты уже ознакомился с правилами? Самое время сделать это сейчас!</p>
                     : 
