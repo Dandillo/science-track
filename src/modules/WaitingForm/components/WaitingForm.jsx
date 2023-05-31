@@ -38,9 +38,10 @@ function WaitingForm({connectCount}) {
     connectCount = 23;
   return (
     <WaitingBG>
-        <div style={{
-            borderRadius: `25px`,
-            backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      <div
+        style={{
+          borderRadius: `25px`,
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
         }}
             className="w-[420px] h-[480px] -translate-y-6 pt-10 pb-5 px-6 ml-auto mr-32 flex flex-col">
                 <div className='flex justify-start items-center'>
@@ -82,7 +83,7 @@ function WaitingForm({connectCount}) {
                 }
         </div>
     </WaitingBG>
-  )
+  );
 }
 
-export default WaitingForm
+export default WaitingForm;

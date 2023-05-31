@@ -6,19 +6,19 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import Waiting from "./pages/Waiting/Waiting";
 import NotFound from "./pages/NotFound/NotFound";
+import Result from "./pages/Result";
 import Test from "./pages/Test";
 import Game from "./pages/Game";
-import { Provider } from 'react-redux'
-import userStore from './modules/LoginForm/store/UserStore';
+import { Provider } from "react-redux";
+import userStore from "./modules/LoginForm/store/UserStore";
 import gameStore from "./modules/Game/store/GameStore";
-import { configureStore } from '@reduxjs/toolkit'
-
+import { configureStore } from "@reduxjs/toolkit";
 export const store = configureStore({
   reducer: {
     user: userStore,
-    game: gameStore
+    game: gameStore,
   },
-})
+});
 
 const router = createBrowserRouter([
   {
@@ -31,7 +31,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/game",
-    element: <Game />,
+    element: <Game  />,
+  },
+  {
+    path: "/results",
+    element: <Result />,
   },
   {
     path: "/test",
@@ -42,7 +46,6 @@ const router = createBrowserRouter([
     element: <NotFound />,
   },
 ]);
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
