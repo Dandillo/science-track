@@ -13,12 +13,45 @@ import { Provider } from "react-redux";
 import userStore from "./modules/LoginForm/store/UserStore";
 import gameStore from "./modules/Game/store/GameStore";
 import { configureStore } from "@reduxjs/toolkit";
-export const store = configureStore({
-  reducer: {
-    user: userStore,
-    game: gameStore,
-  },
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import { PersistGate } from 'redux-persist/integration/react'
+import { combineReducers } from 'redux';
+
+
+const rootReducer = combineReducers({
+  user: userStore,
+  game: gameStore,
 });
+
+const persistConfig = {
+  key: 'root',
+  version: 1,
+  storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+})
+
+let persistor = persistStore(store)
 
 const router = createBrowserRouter([
   {
@@ -46,11 +79,14 @@ const router = createBrowserRouter([
     element: <NotFound />,
   },
 ]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <PersistGate loading={null} persistor={persistor}>
+        <RouterProvider router={router} />
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );

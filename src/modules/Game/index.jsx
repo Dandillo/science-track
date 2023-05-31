@@ -4,6 +4,7 @@ import GameChanges from "./components/Game/GameChanges";
 import Player from "./components/Game/Player";
 import Decisions from "./components/Game/Decisions";
 import * as signalR from "@microsoft/signalr";
+import { useSelector } from "react-redux";
 
 const hubConnection = new signalR.HubConnectionBuilder()
   .configureLogging(signalR.LogLevel.Debug)
@@ -31,6 +32,7 @@ start();
 export default function Game() {
   const [timer, setTimer] = useState(0);
   const [currentRound, setCurrentRound] = useState();
+  const idGame = useSelector(state => state.game.idGame);
 
   useEffect(() => {
     const handleCurrentTime = (time) => {
@@ -48,10 +50,12 @@ export default function Game() {
     hubConnection.on("CurrentTime", handleCurrentTime);
     hubConnection.on("NewRound", handleNewRound);
   }, []);
+
   const handleStart = () => {
-    hubConnection.invoke("StartGame", 1);
-    hubConnection.invoke("AddToGroup", "3");
+    hubConnection.invoke("StartGame", idGame);
+    hubConnection.invoke("AddToGroup", String(idGame));
   };
+
   return (
     <GameBackground className="grid lg:grid-cols-game h-full md:grid-cols-1 justify-items-center p-[1.2rem] items-center w-full gap-3 overflow-hidden">
       <GameChanges currentRound={currentRound} />

@@ -13,9 +13,9 @@ function WaitingForm({ connectCount }) {
   const role = useSelector((state) => state.user.role);
   const userId = useSelector((state) => state.user.id);
   const userOffName = useSelector((state) => state.user.offName);
+  const idGame = useSelector(state => state.game.idGame);
   const dispatch = useDispatch();
   const navigate = useNavigate(null);
-  console.log(userId);
   const handleCreateGame = (e) => {
     e.preventDefault();
     WaitingService.createGame()
