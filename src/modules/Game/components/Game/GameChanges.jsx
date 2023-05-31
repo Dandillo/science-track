@@ -1,25 +1,36 @@
-﻿import React from "react";
+﻿import React, { useEffect, useState } from "react";
 import EventContainer from "../../../../components/EventContainer/EventContainer";
 import PlayerContainer from "./PlayerContainer";
 import GameLogo from "./GameLogo";
-function GameChanges() {
+import { useSelector } from "react-redux";
+import { gameApi } from "../../api/gameApi";
+function GameChanges({ currentRound }) {
+  const [localChange, setLocalChange] = useState("");
+  const [globalChange, setGlobalChange] = useState("");
+
+  const userId = useSelector((state) => state.user.id);
+  useEffect(() => {
+    console.log(userId);
+    if (currentRound !== undefined) {
+      gameApi
+        .GetPlayerRoundStatusEvents(currentRound.id, userId)
+        .then((events) => {
+          console.log(events);
+          setLocalChange(events.data.localEvent.description);
+          setGlobalChange(events.data.globalEvent.description);
+        })
+        .catch((err) => console.error(err));
+    }
+  }, [currentRound]);
+
   return (
     <div className="flex flex-col gap-y-[1rem] h-full">
       <GameLogo />
-      <EventContainer
-        title={"Глобальные изменения"}
-        info={
-          "В связи с возросшей геополитической напряженностью и отказом прежних иностранных партнеров от сотрудничества \
-          с вашей научной командой, произошло заключение контракта с учеными из страны 2"
-        }
-      />
-      <EventContainer
-        title={"Локальные изменения"}
-        info={
-          "Обучение студентов и молодых ученых в рамках научных семинаров и курсов. Которые потенциально станут его последователями"
-        }
-      />
-      <PlayerContainer count={"57"} />
+
+      <EventContainer title={"Глобальные изменения"} info={localChange} />
+
+      <EventContainer title={"Локальные изменения"} info={globalChange} />
+      <PlayerContainer count={"1"} />
     </div>
   );
 }

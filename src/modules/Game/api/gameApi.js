@@ -12,7 +12,21 @@ const getSolutions = async (pageNum, pageSize) => {
     throw error.response.data;
   }
 };
+const GetPlayerRoundStatusEvents = async (roundId, userId) => {
+  try {
+    const { data } = await $api.get("/Game/GetPlayerRoundStatusEvents", {
+      params: {
+        roundId: roundId,
+        userId: userId,
+      },
+    });
+    return { data };
+  } catch (error) {
+    throw error.response.data;
+  }
+};
 
 export const gameApi = {
   getSolutions,
+  GetPlayerRoundStatusEvents,
 };

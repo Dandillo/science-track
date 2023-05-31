@@ -30,7 +30,7 @@ hubConnection.onclose(async () => {
 start();
 export default function Game() {
   const [timer, setTimer] = useState(0);
-  const [currentRound, setCurrentRound] = useState(19);
+  const [currentRound, setCurrentRound] = useState();
 
   useEffect(() => {
     const handleCurrentTime = (time) => {
@@ -41,7 +41,7 @@ export default function Game() {
 
     const handleNewRound = (round) => {
       console.log(round);
-      setCurrentRound(round.age);
+      setCurrentRound(round);
       // hubConnection.off("NewRound", handleNewRound);
     };
 
@@ -50,19 +50,18 @@ export default function Game() {
   }, []);
   const handleStart = () => {
     hubConnection.invoke("StartGame", 1);
-    hubConnection.invoke("AddToGroup", "1");
+    hubConnection.invoke("AddToGroup", "3");
   };
   return (
     <GameBackground className="grid lg:grid-cols-game h-full md:grid-cols-1 justify-items-center p-[1.2rem] items-center w-full gap-3 overflow-hidden">
-      <GameChanges />
+      <GameChanges currentRound={currentRound} />
 
       <Player
-        currentRound={currentRound}
+        currentRound={currentRound != undefined ? currentRound.age : 19}
         timer={timer}
         handleStart={handleStart}
-    
       />
-      <Decisions />
+      <Decisions currentRound={currentRound} />
     </GameBackground>
   );
 }

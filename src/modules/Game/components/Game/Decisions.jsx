@@ -1,4 +1,4 @@
-﻿import React from "react";
+﻿import React, { useEffect, useState } from "react";
 import socialLogo from "../../../../assets/svg/social.svg";
 import capitolLogo from "../../../../assets/svg/capitol.svg";
 import moneyLogo from "../../../../assets/svg/money.svg";
@@ -7,13 +7,31 @@ import StatContainer from "./StatContainer";
 // import DecisionElement from "./DecisionElement";
 import SolutionsContainer from "./SolutionsContainer";
 import { useSelector } from "react-redux";
+import { gameApi } from "../../api/gameApi";
 
-function Decisions() {
-  const socialStatusAmount = useSelector((state) => state.user.socialStatus);
-  const financeStatusAmount = useSelector((state) => state.user.financeStatus);
-  const administrativeStatusAmount = useSelector(
-    (state) => state.user.administrativeStatus
-  );
+function Decisions({ currentRound }) {
+  const [socialStatusAmount, setSocialStatusAmount] = useState();
+  const [financeStatusAmount, setFinanceStatusAmount] = useState();
+  const [administrativeStatusAmount, setAdministrativeStatusAmount] =
+    useState();
+
+  const userId = useSelector((state) => state.user.id);
+
+  useEffect(() => {
+    console.log(userId);
+    if (currentRound !== undefined) {
+      gameApi
+        .GetPlayerRoundStatusEvents(currentRound.id, userId)
+        .then((events) => {
+          console.log(events);
+          setSocialStatusAmount(events.data.socialStatus);
+          setFinanceStatusAmount(events.data.financeStatus);
+          setAdministrativeStatusAmount(events.data.administrativeStatus);
+        })
+        .catch((err) => console.error(err));
+    }
+  }, [currentRound]);
+
   return (
     <div className="flex flex-col h-full items-center gap-y-[3rem]">
       <div className="statistics flex gap-3">
