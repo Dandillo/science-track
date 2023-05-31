@@ -15,6 +15,7 @@
   rules: {
     "unicode-bom": "off",
     "react/prop-types": "off",
+    "no-unused-vars": "off"
   },
   settings: {
     react: {
