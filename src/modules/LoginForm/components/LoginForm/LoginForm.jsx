@@ -41,7 +41,7 @@ const LoginForm = () => {
   return (
     <div
       className="bg-white text-grayColor flex flex-col  items-center gap-[64px] 
-    pt-[40px] px-[30px] w-[60%] justify-self-end h-full flex-wrap mr-[4rem]"
+    pt-[40px] px-[30px] w-full justify-center h-full flex-wrap"
     >
       <div className="app-descr flex flex-col gap-4 items-center">
         <h1 className="text-6xl ">SCIENCE TRACK</h1>
