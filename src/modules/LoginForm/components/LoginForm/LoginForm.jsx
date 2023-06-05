@@ -29,13 +29,13 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
-    AuthServices.logout()
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((err) => {
-        console.log(err.data);
-      });
+    // AuthServices.logout()
+    //   .then((response) => {
+    //     console.log(response.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.data);
+    //   });
   }, []);
 
   return (
