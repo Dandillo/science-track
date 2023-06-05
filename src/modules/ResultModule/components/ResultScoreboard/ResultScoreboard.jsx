@@ -1,5 +1,6 @@
 ﻿import React from "react";
 import star from "../../../../assets/images/Star.png";
+import ScoreRow from "../ScoreRow/ScoreRow";
 
 function ResultScoreboard() {
   return (
@@ -12,7 +13,29 @@ function ResultScoreboard() {
       <p className="bg-orange-500 bg-clip-text text-transparent  text-[70px]">
         РЕЗУЛЬТАТЫ
       </p>
-      <div className=""></div>
+      <div className="rows flex flex-col gap-5">
+        <ScoreRow
+          place={"Место"}
+          name={"Имя"}
+          social={"Соц. статус"}
+          finance={"Фин. накопления"}
+          administrative={"Адм. ресурс"}
+        />
+        <ScoreRow
+          place={"Место"}
+          name={"Имя"}
+          social={"Соц. статус"}
+          finance={"Фин. накопления"}
+          administrative={"Адм. ресурс"}
+        />
+        <ScoreRow
+          place={"Место"}
+          name={"Имя"}
+          social={"Соц. статус"}
+          finance={"Фин. накопления"}
+          administrative={"Адм. ресурс"}
+        />
+      </div>
     </div>
   );
 }

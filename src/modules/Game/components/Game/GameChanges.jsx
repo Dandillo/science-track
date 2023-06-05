@@ -27,9 +27,9 @@ function GameChanges({ currentRound }) {
     <div className="flex flex-col gap-y-[1rem] h-full">
       <GameLogo />
 
-      <EventContainer title={"Глобальные изменения"} info={localChange} />
+      <EventContainer title={"Глобальные изменения"} info={globalChange} />
 
-      <EventContainer title={"Локальные изменения"} info={globalChange} />
+      <EventContainer title={"Локальные изменения"} info={localChange} />
       <PlayerContainer count={"1"} />
     </div>
   );

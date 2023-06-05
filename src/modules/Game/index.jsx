@@ -7,7 +7,8 @@ import * as signalR from "@microsoft/signalr";
 import { useSelector } from "react-redux";
 
 const hubConnection = new signalR.HubConnectionBuilder()
-  .configureLogging(signalR.LogLevel.Debug)
+  .configureLogging(signalR.LogLevel.Critical)
+
   .withUrl("http://localhost:5144/GameHub", {
     skipNegotiation: true,
     transport: signalR.HttpTransportType.WebSockets,
@@ -32,7 +33,8 @@ start();
 export default function Game() {
   const [timer, setTimer] = useState(0);
   const [currentRound, setCurrentRound] = useState();
-  const idGame = useSelector(state => state.game.idGame);
+  const idGame = useSelector((state) => state.game.idGame);
+  hubConnection.invoke("AddToGroup", String(idGame));
 
   useEffect(() => {
     const handleCurrentTime = (time) => {
@@ -53,7 +55,6 @@ export default function Game() {
 
   const handleStart = () => {
     hubConnection.invoke("StartGame", idGame);
-    hubConnection.invoke("AddToGroup", String(idGame));
   };
 
   return (

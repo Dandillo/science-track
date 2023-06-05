@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         // Complex site-specific column configuration
-        login: "1fr 1fr 1fr",
+        login: "1fr 1fr 700px",
         game: "1fr 1fr 1fr",
       },
       colors: {

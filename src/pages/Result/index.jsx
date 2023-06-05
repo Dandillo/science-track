@@ -1,5 +1,5 @@
 import React from "react";
 import ResultModule from "../../modules/ResultModule";
-export default function LoginPage() {
+export default function ResultPage() {
   return <ResultModule />;
 }
