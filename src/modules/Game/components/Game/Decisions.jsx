@@ -34,7 +34,7 @@ function Decisions({ currentRound }) {
 
   return (
     <div className="flex flex-col h-full items-center gap-y-[3rem]">
-      <div className="statistics flex gap-3">
+      <div className="statistics flex gap-3 ">
         <StatContainer>
           <img
             src={socialLogo}
@@ -60,7 +60,7 @@ function Decisions({ currentRound }) {
           </p>
         </StatContainer>
       </div>
-      <SolutionsContainer />
+      <SolutionsContainer currentRound={currentRound} />
     </div>
   );
 }

@@ -5,66 +5,60 @@ import Player from "./components/Game/Player";
 import Decisions from "./components/Game/Decisions";
 import * as signalR from "@microsoft/signalr";
 import { useSelector } from "react-redux";
+import hubConnection from "../../http/gameHub";
+import { API_URL } from "../../http/api";
+import playerImg from "../../assets/images/Player.png";
+import { useNavigate } from "react-router-dom";
 
-const hubConnection = new signalR.HubConnectionBuilder()
-  .configureLogging(signalR.LogLevel.Critical)
-
-  .withUrl("http://localhost:5144/GameHub", {
-    skipNegotiation: true,
-    transport: signalR.HttpTransportType.WebSockets,
-  })
-  .build();
-
-async function start() {
-  try {
-    await hubConnection.start();
-    console.log("SignalR Connected.");
-  } catch (err) {
-    console.log(err);
-    setTimeout(start, 5000);
-  }
-}
-
-hubConnection.onclose(async () => {
-  await start();
-});
-
-start();
 export default function Game() {
   const [timer, setTimer] = useState(0);
   const [currentRound, setCurrentRound] = useState();
+  const [stageDisc, setStageDisc] = useState(
+    "Игрок с высоким социальным статусом обычно обладает огромным количеством связей и знакомств в различных сферах жизни. Он умеет держать себя в обществе и производить благоприятное впечатление на окружающих"
+  );
+  const [stagePicture, setStagePicture] = useState(playerImg);
   const idGame = useSelector((state) => state.game.idGame);
-  hubConnection.invoke("AddToGroup", String(idGame));
-
+  const navigate = useNavigate();
   useEffect(() => {
     const handleCurrentTime = (time) => {
       console.log(time);
       setTimer(time);
-      // hubConnection.off("CurrentTime", handleCurrentTime);
     };
 
     const handleNewRound = (round) => {
       console.log(round);
+      if (round === "end") {
+        navigate(`/results/${idGame}`);
+      }
       setCurrentRound(round);
-      // hubConnection.off("NewRound", handleNewRound);
+      setStageDisc(round.stageDisc);
+      setStagePicture(API_URL + round.picture);
     };
 
     hubConnection.on("CurrentTime", handleCurrentTime);
     hubConnection.on("NewRound", handleNewRound);
+    return () => {};
   }, []);
 
   const handleStart = () => {
     hubConnection.invoke("StartGame", idGame);
   };
+  const handleAddGroupStart = () => {
+    hubConnection.invoke("RemoveFromGroup", String(idGame));
+
+    hubConnection.invoke("AddToGroup", String(idGame));
+  };
 
   return (
     <GameBackground className="grid lg:grid-cols-game h-full md:grid-cols-1 justify-items-center p-[1.2rem] items-center w-full gap-3 overflow-hidden">
-      <GameChanges currentRound={currentRound} />
+      <GameChanges currentRound={currentRound} handleStart={handleStart} />
 
       <Player
         currentRound={currentRound != undefined ? currentRound.age : 19}
         timer={timer}
-        handleStart={handleStart}
+        handleAddGroupStart={handleAddGroupStart}
+        description={stageDisc}
+        stagePicture={stagePicture}
       />
       <Decisions currentRound={currentRound} />
     </GameBackground>

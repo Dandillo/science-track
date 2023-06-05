@@ -2,15 +2,22 @@
 import EventContainer from "../../../../components/EventContainer/EventContainer";
 import PlayerContainer from "./PlayerContainer";
 import GameLogo from "./GameLogo";
+import StartIcon from "../../../../assets/svg/Start.svg";
 import { useSelector } from "react-redux";
 import { gameApi } from "../../api/gameApi";
-function GameChanges({ currentRound }) {
-  const [localChange, setLocalChange] = useState("");
-  const [globalChange, setGlobalChange] = useState("");
+function GameChanges({ currentRound, handleStart }) {
+  const [localChange, setLocalChange] = useState(
+    "Обучение студентов и молодых ученых в рамках научных семинаров и курсов. Которые потенциально станут его последователями"
+  );
+  const [globalChange, setGlobalChange] = useState(
+    "В связи с возросшей геополитической напряженностью и отказом прежних иностранных партнеров от сотрудничества с вашей научной командой, произошло заключение контракта с учеными из страны 2"
+  );
+  const role = useSelector((state) => state.user.role);
 
   const userId = useSelector((state) => state.user.id);
   useEffect(() => {
     console.log(userId);
+
     if (currentRound !== undefined) {
       gameApi
         .GetPlayerRoundStatusEvents(currentRound.id, userId)
@@ -25,12 +32,20 @@ function GameChanges({ currentRound }) {
 
   return (
     <div className="flex flex-col gap-y-[1rem] h-full">
-      <GameLogo />
-
+      <div className="flex justify-between">
+        <GameLogo />
+        <button
+          hidden={role !== "admin"}
+          className="hover:scale-105	 hover:transform"
+          onClick={handleStart}
+        >
+          <img src={StartIcon} alt="" />
+        </button>
+      </div>
       <EventContainer title={"Глобальные изменения"} info={globalChange} />
 
       <EventContainer title={"Локальные изменения"} info={localChange} />
-      <PlayerContainer count={"1"} />
+      <PlayerContainer count={"..."} />
     </div>
   );
 }

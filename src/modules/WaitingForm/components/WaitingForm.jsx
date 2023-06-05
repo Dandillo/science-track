@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { setIdGame } from "../../Game/store/GameStore";
 import WaitingService from "../services/WaitingServices";
 import Input from "../../../ui/Input";
+import hubConnection from "../../../http/gameHub";
 
 function WaitingForm({ connectCount }) {
   useAuthRedirect();
@@ -16,6 +17,7 @@ function WaitingForm({ connectCount }) {
   const userId = useSelector((state) => state.user.id);
   const userOffName = useSelector((state) => state.user.offName);
   const idGame = useSelector((state) => state.game.idGame);
+  const [inputGameId, setInputGameId] = useState();
   const [isEmpty, setIsEmpty] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate(null);
@@ -23,9 +25,12 @@ function WaitingForm({ connectCount }) {
     e.preventDefault();
     WaitingService.createGame()
       .then((response) => {
-        dispatch(setIdGame(response.data.id));
-        WaitingService.addUser(response.data.id, userId)
+        const gameID = response.data.id;
+        dispatch(setIdGame(gameID));
+        WaitingService.addUser(gameID, userId)
           .then(() => {
+            hubConnection.invoke("RemoveFromGroup", String(gameID));
+            hubConnection.invoke("AddToGroup", String(gameID));
             navigate("/game");
           })
           .catch((err) => {
@@ -37,11 +42,11 @@ function WaitingForm({ connectCount }) {
       });
   };
   const handleConnectGame = (e) => {
-    e.preventDefault();
-    const gameId = e.target.value;
-    WaitingService.addUser(gameId, userId)
+    WaitingService.addUser(inputGameId, userId)
       .then(() => {
-        dispatch(setIdGame(gameId));
+        dispatch(setIdGame(inputGameId));
+        hubConnection.invoke("RemoveFromGroup", String(inputGameId));
+        hubConnection.invoke("AddToGroup", String(inputGameId));
 
         navigate("/game");
       })
@@ -49,9 +54,14 @@ function WaitingForm({ connectCount }) {
         console.log(err);
       });
   };
-  const handleInput = (e) => setIsEmpty(e.target.value.length == 0);
+  const handleInput = (e) => {
+    setIsEmpty(e.target.value.length === 0);
+    console.log(isEmpty);
+    console.log(e.target.value);
+    setInputGameId(e.target.value);
+  };
 
-  connectCount = 23;
+  connectCount = '...';
   return (
     <WaitingBG>
       <div
@@ -93,6 +103,7 @@ function WaitingForm({ connectCount }) {
                 type="text"
                 id="gameId"
                 className="p-3 rounded-xl border-orangeColor border"
+                onChange={handleInput}
               />
             </div>
             <button
@@ -100,10 +111,9 @@ function WaitingForm({ connectCount }) {
               style={{
                 borderRadius: "16px",
               }}
-              onChange={handleInput}
               disabled={isEmpty}
               className="bg-transparent border-green-500 text-green-500 hover:border-green-700 hover:text-green-700
-                            border-4 w-full py-2 text-2xl font-semibold cursor-pointer mt-4"
+                            border-4 w-full py-2 text-2xl font-semibold cursor-pointer mt-4 disabled:border-gray-700 disabled:text-gray-700"
             >
               Присоединиться к игре
             </button>
