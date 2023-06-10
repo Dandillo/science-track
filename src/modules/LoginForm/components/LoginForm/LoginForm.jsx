@@ -41,42 +41,41 @@ const LoginForm = () => {
   return (
     <div
       className="bg-white text-grayColor flex flex-col items-center gap-4 
-    pt-[40px] px-[30px] w-full justify-center h-full flex-wrap"
-    >
-      <div className="app-descr flex flex-col gap-4 items-center">
-        <h1 className="text-6xl">SCIENCE TRACK</h1>
-        <p className="text-3xl text-center">
+     w-full px-[100px] justify-center h-full flex-wrap pt-[40px]">
+      <div className="flex flex-col gap-4 items-center"> {/* app-descr */}
+        <h1 className="text-5xl font-semibold">SCIENCE TRACK</h1>
+        <p className="text-2xl text-center">
           Выбирайте карточки и развивайте свой персональный профиль в
           социологической игре!
         </p>
       </div>
-      <p className="form-heading text-6xl ">Авторизация</p>
+      <p className="form-heading text-4xl ">Авторизация</p>
       <form
         onSubmit={handleLogin}
-        className=" flex flex-col gap-[50px] w-full "
+        className=" flex flex-col gap-[20px] w-[512px] "
       >
         <div className="input-container  ">
-          <p className="inputLabel text-3xl">
+          <p className="inputLabel text-2xl">
             Твой логин<span className="text-redColor">*</span>:
           </p>
           <Input
             value={login}
             onChange={(e) => setLogin(e.target.value)}
             id="login"
-            className=" h-[69px] w-full mt-[13px] text-2xl"
+            className=" h-[55px] w-full mt-[13px] text-1xl"
             type="text"
             placeholder="Введи свой логин..."
           />
         </div>
         <div className="input-container w-full">
-          <p className="inputLabel text-3xl ">
+          <p className="inputLabel text-2xl ">
             Твой пароль<span className="text-redColor">*</span>:
           </p>
           <Input
             value={pass}
             onChange={(e) => setPass(e.target.value)}
             id="password"
-            className=" h-[69px] w-full mt-[13px] text-2xl"
+            className=" h-[55px] mt-[13px] w-full text-1xl"
             type="password"
             placeholder="Введи свой пароль..."
           />
@@ -84,7 +83,7 @@ const LoginForm = () => {
         <Button
           type="submit"
           className="bg-gradient-to-br from-orange-600 via-orange-500 to-orange-600	
-          h-[69px] text-white font-400 text-2xl	uppercase hover:bg-orangeColor hover:bg-none transition-bg ease-in"
+          h-[55px] text-white font-400 text-2xl	uppercase hover:bg-orangeColor hover:bg-none transition-bg ease-in"
         >
           Войти
           <HiArrowLongRight className="inline" />

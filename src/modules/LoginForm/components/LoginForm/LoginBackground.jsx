@@ -19,8 +19,8 @@ const LoginBackground = () => {
       <img
         src={MainPhoto}
         alt=""
-        className="w-[100%] lg:translate-x-[60%] block"
-      />
+        className="w-[100%] lg:translate-x-[50%] drop-shadow-imgShadow"
+      /> {/* block */}
     </div>
   );
 };
