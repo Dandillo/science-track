@@ -1,4 +1,4 @@
-$sizeImg: 60%;
+$sizeImg: 60vh;
 
 .loginBg {
     @apply w-full relative flex justify-end items-center;
@@ -8,8 +8,8 @@ $sizeImg: 60%;
             @apply absolute;
             object-fit: cover;
             background-image: url("../../../../assets/images/bg.jpg");
-            width: calc(100% - #{$sizeImg} / 2);
-            height: 100%;
+            width: calc(100vh - #{$sizeImg} / 2);
+            height: 100vh;
             left: 0;
         }
 

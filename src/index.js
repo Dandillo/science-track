@@ -1,14 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import LoginFormPage from "./pages/LoginPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
+
+// pages
+import LoginFormPage from "./pages/LoginPage";
+import Choose from "./pages/Choose";
 import Waiting from "./pages/Waiting/Waiting";
 import NotFound from "./pages/NotFound/NotFound";
 import Result from "./pages/Result";
 import Test from "./pages/Test/Test";
 import Game from "./pages/Game";
+
+// redux + state manager
 import { Provider } from "react-redux";
 import userStore from "./modules/LoginForm/store/UserStore";
 import gameStore from "./modules/Game/store/GameStore";
@@ -26,7 +31,6 @@ import {
 import storage from 'redux-persist/lib/storage'
 import { PersistGate } from 'redux-persist/integration/react'
 import { combineReducers } from 'redux';
-
 
 const rootReducer = combineReducers({
   user: userStore,
@@ -69,6 +73,10 @@ const router = createBrowserRouter([
   {
     path: "/results/:gameId",
     element: <Result />,
+  },
+  {
+    path: "/choose",
+    element: <Choose />,
   },
   {
     path: "/test",

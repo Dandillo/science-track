@@ -45,7 +45,6 @@ function GameChanges({ currentRound, handleStart }) {
       <EventContainer title={"Глобальные изменения"} info={globalChange} />
 
       <EventContainer title={"Локальные изменения"} info={localChange} />
-      <PlayerContainer count={"..."} />
     </div>
   );
 }
