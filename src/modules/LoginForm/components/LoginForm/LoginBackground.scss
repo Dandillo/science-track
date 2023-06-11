@@ -1,0 +1,20 @@
+$sizeImg: 60%;
+
+.loginBg {
+    @apply w-full relative flex justify-end items-center;
+        
+        &:before {
+            content: '';
+            @apply absolute;
+            object-fit: cover;
+            background-image: url("../../../../assets/images/bg.jpg");
+            width: calc(100% - #{$sizeImg} / 2);
+            height: 100%;
+            left: 0;
+        }
+
+        img {
+            max-width: $sizeImg;
+            @apply z-10;
+        }
+}

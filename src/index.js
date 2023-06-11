@@ -7,7 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import Waiting from "./pages/Waiting/Waiting";
 import NotFound from "./pages/NotFound/NotFound";
 import Result from "./pages/Result";
-import Test from "./pages/Test";
+import Test from "./pages/Test/Test";
 import Game from "./pages/Game";
 import { Provider } from "react-redux";
 import userStore from "./modules/LoginForm/store/UserStore";
