@@ -13,11 +13,6 @@ $sizeImg: 75%;
             height: 100%;
             left: 0;
         }
-
-        img {
-            width: $sizeImg;
-            @apply z-10;
-        }
     }
 
     .text {

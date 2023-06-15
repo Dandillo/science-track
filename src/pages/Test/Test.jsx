@@ -6,7 +6,7 @@ function Test() {
   return (
     <div className='test'>
       <div className="cover">
-        <img src={image} alt="" />
+        <p>text</p>
       </div>
       <div className="text"></div>
     </div>
