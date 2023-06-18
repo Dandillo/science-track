@@ -5,8 +5,8 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         // Complex site-specific column configuration
-        login: "1fr 1fr 700px",
-        game: "1fr 1fr 1fr",
+        login: "2fr 2fr 900px",
+        game: "2fr 2fr 2fr",
       },
       colors: {
         orangeColor: "#fb7a30",
@@ -24,6 +24,9 @@ module.exports = {
         regular: 400,
         medium: 500,
         "semi-bold": 600,
+      },
+      dropShadow: {
+        imgShadow: "14px 14px 50px rgba(0, 0, 0, 0.15)",
       },
     },
   },

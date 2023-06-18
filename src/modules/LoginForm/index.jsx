@@ -3,7 +3,7 @@ import LoginForm from "./components/LoginForm/LoginForm";
 import LoginBackground from "./components/LoginForm/LoginBackground";
 export default function LoginFormIndex() {
   return (
-    <div className="grid lg:grid-cols-login h-full md:grid-cols-1">
+    <div className="w-screen h-screen flex"> {/* grid lg:grid-cols-login h-full md:grid-cols-1 */}
       <LoginBackground />
       <div></div>
       <LoginForm />

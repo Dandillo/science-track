@@ -1,0 +1,21 @@
+$sizeImg: 75%;
+
+.test {
+    @apply w-screen h-screen flex;
+  
+    .cover {
+        @apply w-[50%] relative flex justify-end items-center;
+        
+        &:before {
+            content: '';
+            @apply bg-slate-400 absolute;
+            width: calc(100% - #{$sizeImg} / 2);
+            height: 100%;
+            left: 0;
+        }
+    }
+
+    .text {
+        @apply w-full bg-slate-600;
+    }
+}
