@@ -61,7 +61,7 @@ function WaitingForm({ connectCount }) {
     setInputGameId(e.target.value);
   };
 
-  connectCount = '...';
+  connectCount = "...";
   return (
     <WaitingBG>
       <div

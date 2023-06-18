@@ -21,7 +21,7 @@ const LoginForm = () => {
         dispatch(setOffName(response.data.officialName));
         dispatch(setRole(response.data.role));
         dispatch(setId(response.data.userId));
-        navigate("/waiting");
+        window.location.replace("/waiting");
       })
       .catch(() => {
         console.log("error");
