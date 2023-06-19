@@ -9,7 +9,7 @@ import hubConnection from "../../http/gameHub";
 import { API_URL } from "../../http/api";
 import playerImg from "../../assets/images/Player.png";
 import { useNavigate } from "react-router-dom";
-
+import "./css/game.css";
 export default function Game() {
   const [timer, setTimer] = useState(0);
   const [currentRound, setCurrentRound] = useState();
@@ -50,7 +50,7 @@ export default function Game() {
   };
 
   return (
-    <GameBackground className="grid lg:grid-cols-game h-full md:grid-cols-1 justify-items-center p-[1.2rem] items-center w-full gap-3 overflow-hidden">
+    <GameBackground className="flex h-full  justify-items-center p-[1.2rem] items-center w-full gap-3 ">
       <GameChanges currentRound={currentRound} handleStart={handleStart} />
 
       <Player

@@ -3,6 +3,7 @@ import star from "../../../../assets/images/Star.png";
 import ScoreRow from "../ScoreRow/ScoreRow";
 import { gameApi } from "../../../Game/api/gameApi";
 import { useParams } from "react-router-dom";
+import RoundedContainer from "../../../../components/RoundedContainer/RoundedContainer";
 
 function ResultScoreboard() {
   const [scoreTableData, setScoreTableData] = useState([]);
@@ -18,7 +19,7 @@ function ResultScoreboard() {
 
   return (
     scoreTableData && (
-      <div className="bg-gray-900 bg-opacity-[95%] rounded-[80px] h-[800px] w-[70%] flex items-center p-5 flex-col ">
+      <RoundedContainer extraClasses="rounded-[80px] items-center bg-gray-900">
         <div className="flex h-[100px]">
           <img
             src={star}
@@ -31,7 +32,6 @@ function ResultScoreboard() {
         <p className="bg-orange-500 bg-clip-text text-transparent  text-[70px]">
           РЕЗУЛЬТАТЫ
         </p>
-
         <div className="rows flex flex-col gap-5">
           <ScoreRow
             place={"Место"}
@@ -51,7 +51,7 @@ function ResultScoreboard() {
             />
           ))}
         </div>
-      </div>
+      </RoundedContainer>
     )
   );
 }

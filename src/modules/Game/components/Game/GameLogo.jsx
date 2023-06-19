@@ -1,11 +1,18 @@
 ﻿import React from "react";
 import logo from "../../../../assets/images/Logo.png";
 
-const GameLogo = () => {
+const GameLogo = ({ admin }) => {
   return (
     <div className="flex items-center gap-x-4">
       <img src={logo} alt="" className="block" />
-      <p className="uppercase text-[1.25rem] text-[#FFC4C7]">science-track</p>
+      <div>
+        <p className="uppercase text-[1.25rem] text-[#945457]">
+          science-track{" "}
+        </p>
+        {admin && (
+          <p className="uppercase text-[1.25rem] text-[#945457]">admin</p>
+        )}
+      </div>
     </div>
   );
 };

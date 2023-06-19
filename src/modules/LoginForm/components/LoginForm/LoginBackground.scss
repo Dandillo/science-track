@@ -8,6 +8,8 @@ $sizeImg: 60vh;
             @apply absolute;
             object-fit: cover;
             background-image: url("../../../../assets/images/bg.jpg");
+            background-repeat: no-repeat;
+            background-position: center center;
             width: calc(100vh - #{$sizeImg} / 2);
             height: 100vh;
             left: 0;

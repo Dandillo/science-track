@@ -1,0 +1,14 @@
+﻿.stat-hint {
+    background-color: rgba(255, 170, 39, 0.95);
+
+}
+
+#triangle-up{
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 20px solid rgba(255, 170, 39, 0.95);
+
+}

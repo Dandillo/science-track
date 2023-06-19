@@ -11,11 +11,10 @@ const ResultBackground = ({ className, children, ...props }) => {
         backgroundPosition: "center",
         backgroundSize: "100% 100%",
         backgroundRepeat: "no-repeat",
-        position: "relative", // Добавляем позиционирование для дополнительного слоя
+        position: "relative",
       }}
       {...props}
     >
-      {/* Дополнительный слой с затемнением */}
       <div
         style={{
           position: "absolute",
@@ -23,7 +22,7 @@ const ResultBackground = ({ className, children, ...props }) => {
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.35)", // Здесь можно настроить желаемый цвет и прозрачность
+          backgroundColor: "rgba(0, 0, 0, 0.35)",
         }}
       />
 

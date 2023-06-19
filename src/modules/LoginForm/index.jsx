@@ -5,7 +5,6 @@ export default function LoginFormIndex() {
   return (
     <div className="w-screen h-screen flex"> {/* grid lg:grid-cols-login h-full md:grid-cols-1 */}
       <LoginBackground />
-      <div></div>
       <LoginForm />
     </div>
   );

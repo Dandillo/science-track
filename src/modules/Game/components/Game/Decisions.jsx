@@ -12,8 +12,7 @@ import { gameApi } from "../../api/gameApi";
 function Decisions({ currentRound }) {
   const [socialStatusAmount, setSocialStatusAmount] = useState();
   const [financeStatusAmount, setFinanceStatusAmount] = useState();
-  const [administrativeStatusAmount, setAdministrativeStatusAmount] =
-    useState();
+  const [administrativeStatusAmount, setAdministrativeStatusAmount] = useState();
 
   const userId = useSelector((state) => state.user.id);
 
@@ -33,9 +32,12 @@ function Decisions({ currentRound }) {
   }, [currentRound]);
 
   return (
-    <div className="flex flex-col h-full items-center gap-y-[3rem]">
+    <div className="flex flex-col h-full items-center gap-y-[3rem] w-1/3 flex-grow ">
       <div className="statistics flex gap-3 ">
-        <StatContainer>
+        <StatContainer
+          title={"Социальный статус"}
+          info={"Даёт возможность тебе быть в центре внимания"}
+        >
           <img
             src={socialLogo}
             width="62"
@@ -44,11 +46,11 @@ function Decisions({ currentRound }) {
           />
           <p className="text-white text-[1.5rem]">{socialStatusAmount}</p>
         </StatContainer>
-        <StatContainer>
+        <StatContainer title={"Финансовые показатели"}>
           <img src={moneyLogo} width="50" height="50" className="money block" />
           <p className="text-white text-[1.5rem]">{financeStatusAmount}</p>
         </StatContainer>
-        <StatContainer>
+        <StatContainer title={"Административный статус"}>
           <img
             src={capitolLogo}
             width="55"
