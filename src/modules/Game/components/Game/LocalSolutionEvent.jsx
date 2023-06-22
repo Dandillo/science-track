@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setLastLocalEventRef } from "../../store/GameStore";
 import { gameApi } from "../../api/gameApi";
 
-function LocalSolutionEvent({ solution, setIsSent }) {
+function LocalSolutionEvent({ solution, setIsSent, currentRound }) {
   const localEventRef = useRef(null);
   const lastLocalSolutionId = useSelector((state) => state.game.lastLocalEventRef);
   const userId = useSelector((state) => state.user.id);
@@ -21,7 +21,7 @@ function LocalSolutionEvent({ solution, setIsSent }) {
         localEventRef.current.style.borderColor = '#68D391';
         localEventRef.current.style.color = '#68D391';
         setIsSent(true);
-        // gameApi.setPlayerChoose(currentRound.id, userId, solution.id);
+        gameApi.setPlayerChoose(currentRound.id, userId, solution.id);
         return;
     }
     localEventRef.current.style.borderColor = '#fb7a30';

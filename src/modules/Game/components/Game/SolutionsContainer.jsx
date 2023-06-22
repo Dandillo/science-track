@@ -134,7 +134,7 @@ function SolutionsContainer({ currentRound }) {
           autoHide={true}
         >
           {data.map((solution, i) =>
-            <LocalSolutionEvent key={i} solution={solution} setIsSent={setIsSent}/>
+            <LocalSolutionEvent key={i} solution={solution} setIsSent={setIsSent} currentRound={currentRound}/>
           )}
         </SimpleBar>
       </EventContainer>
