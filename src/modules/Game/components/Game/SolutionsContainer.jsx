@@ -1,10 +1,12 @@
-﻿import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect, useRef } from "react";
 import EventContainer from "../../../../components/EventContainer/EventContainer";
 import Pagination from "../../../../components/Pagination/Pagination";
 import { gameApi } from "../../api/gameApi";
 import { useDispatch, useSelector } from "react-redux";
 import { setLocalSolution } from "../../store/GameStore";
 import SimpleBar from "simplebar-react";
+import LocalSolutionEvent from "./LocalSolutionEvent";
+
 
 function SolutionsContainer({ currentRound }) {
   const [data, setData] = useState([
@@ -97,7 +99,9 @@ function SolutionsContainer({ currentRound }) {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.user.id);
   const localSolution = useSelector((state) => state.game.localSolution);
+  const [lastIdData, setLastIdData] = useState(0);
   const [isSent, setIsSent] = useState(false);
+
   useEffect(() => {
     setReady(true);
 
@@ -110,14 +114,12 @@ function SolutionsContainer({ currentRound }) {
     //   })
     //   .catch((err) => console.error(err));
   }, []);
+
   useEffect(() => {
     setIsSent(false);
     dispatch(setLocalSolution(""));
   }, [currentRound]);
-  const handlePlayerChoose = (id) => {
-    gameApi.setPlayerChoose(currentRound.id, userId, id);
-    setIsSent(true);
-  };
+
   return (
     ready && (
       <EventContainer title={"Выберите одно решение"} className={"w-full"}>
@@ -132,29 +134,7 @@ function SolutionsContainer({ currentRound }) {
           autoHide={true}
         >
           {data.map((solution, i) =>
-            solution.id === localSolution ? (
-              <div
-                key={i}
-                onClick={() => {
-                  dispatch(setLocalSolution(solution.id));
-                  handlePlayerChoose(solution.id);
-                }}
-                className="border-solid border-[5px] border-green-400 p-[0.7rem] mb-2"
-              >
-                {solution.description}
-              </div>
-            ) : (
-              <div
-                key={i}
-                onClick={() => {
-                  dispatch(setLocalSolution(solution.id));
-                  handlePlayerChoose(solution.id);
-                }}
-                className="border-solid border-[5px] border-gray-400 p-[0.7rem] hover:text-orangeColor hover:border-orangeColor hover:cursor-pointer mb-2"
-              >
-                {solution.description}
-              </div>
-            )
+            <LocalSolutionEvent key={i} solution={solution} setIsSent={setIsSent}/>
           )}
         </SimpleBar>
       </EventContainer>

@@ -5,10 +5,7 @@ import image from '../../assets/images/MainPhoto.png'
 function Test() {
   return (
     <div className='test'>
-      <div className="cover">
-        <p>text</p>
-      </div>
-      <div className="text"></div>
+      <button className='button'>Submit</button>
     </div>
   )
 }

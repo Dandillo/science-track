@@ -1,21 +1,26 @@
 $sizeImg: 75%;
 
 .test {
-    @apply w-screen h-screen flex;
-  
-    .cover {
-        @apply w-[50%] relative flex justify-end items-center;
-        
-        &:before {
-            content: '';
-            @apply bg-slate-400 absolute;
-            width: calc(100% - #{$sizeImg} / 2);
-            height: 100%;
-            left: 0;
-        }
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        border: 3px solid orange;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color: orange;
     }
 
-    .text {
-        @apply w-full bg-slate-600;
+    .button:before {
+        content: "";
+        position: absolute;
+        top: -6px;
+        left: -6px;
+        right: -6px;
+        bottom: -6px;
+        border: 3px solid black;
+        z-index: -1;
     }
+
 }

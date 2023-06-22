@@ -1,0 +1,17 @@
+.buttonStyle {
+    @apply text-2xl bg-orangeColor text-white p-3 rounded-tl-[45px] rounded-br-[45px] relative inline-block;
+
+    &:before {
+        content: "";
+        @apply -top-[6px] -left-[6px] -right-[6px] -bottom-[6px] border-[3px] border-[#4B4B4B] z-[-1] rounded-tl-[45px] rounded-br-[45px] absolute;
+    }
+}
+
+.buttonRedStyle {
+    @apply text-2xl bg-orangeColor text-white p-3 rounded-tl-[45px] rounded-br-[45px] relative inline-block;
+
+    &:before {
+        content: "";
+        @apply -top-[6px] -left-[6px] -right-[6px] -bottom-[6px] border-[3px] border-red-500 z-[-1] rounded-tl-[45px] rounded-br-[45px] absolute;
+    }
+}

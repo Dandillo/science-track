@@ -8,7 +8,7 @@ function WhiteForm({children, title, body}) {
           borderRadius: `25px`,
           backgroundColor: "rgba(255, 255, 255, 0.8)",
         }}
-        className="w-[620px] h-auto -translate-y-6 py-16 px-16 ml-auto mr-32 flex flex-col"
+        className="w-[670px] h-auto -translate-y-6 py-16 px-16 ml-auto mr-32 flex flex-col"
       >
         <div className="flex justify-start items-center">
           <img src={logo} alt="logo" className="h-[130px] w-auto" />
