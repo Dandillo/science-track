@@ -1,5 +1,7 @@
 ﻿import React, { useState } from "react";
-
+import binIcon from "../../../assets/svg/bin.svg";
+import enterIcon from "../../../assets/svg/enter.svg";
+import fileIcon from "../../../assets/svg/file.svg";
 function TabSwitcher() {
   const [activeTab, setActiveTab] = useState(1);
   const [games, setGames] = useState([
@@ -100,24 +102,33 @@ function TabSwitcher() {
       </div>
 
       {activeTab === 1 && (
-        <div className="drop-shadow-xl h-full bg-lightGrayTransparentColor w-full rounded-[20px] mt-[30px] flex flex-col gap-7 justify-center">
+        <div className="drop-shadow-xl h-full bg-lightGrayTransparentColor w-full rounded-[20px] mt-[30px] flex flex-col justify-center items-center">
+          <div className="justify-center items-center text-[15px] grid grid-cols-7 w-full justify-items-center	text-center ">
+            <div className="text-lightGrayColor">Игра</div>
+            <div className="text-lightGrayColor">Дата начала</div>
+            <div className="text-lightGrayColor">Участники</div>
+            <div className="text-lightGrayColor">Длительность игры</div>
+            <div className="text-lightGrayColor">Войти</div>
+            <div className="text-lightGrayColor">Удалить</div>
+            <div className="text-lightGrayColor">Результаты</div>
+          </div>
           {games.map((game, i) => (
             <div
               key={game.id}
-              className="flex justify-around text-[20px] gap-[10px]"
+              className="grid grid-cols-7 justify-center items-center text-[20px] justify-items-center	text-center"
             >
-              <div className="bg-yellow-300 rounded-full w-[38px] h-[38px] text-center text-[30px]">
+              <div className="bg-yellow-300 rounded-full w-[38px] h-[38px] text-center text-[30px] pb-3">
                 {game.id}
               </div>
-              <div>{game.dateStart}</div>
-              <div>{game.participants}</div>
-              <div>{game.duration}</div>
+              <div className="text-[20px]">{game.dateStart}</div>
+              <div className="text-[20px]">{game.participants}</div>
+              <div className="text-[20px]">{game.duration}</div>
 
-              <button>Войти в комнату</button>
+              <img src={enterIcon} alt="" className="block" />
 
-              <button> Удалить комнату</button>
+              <img src={binIcon} alt="" className="block" />
 
-              <button> Выгрузить результаты </button>
+              <img src={fileIcon} alt="" className="block" />
             </div>
           ))}
         </div>
