@@ -32,7 +32,7 @@ function ResultScoreboard() {
         <p className="bg-orange-500 bg-clip-text text-transparent  text-[70px]">
           РЕЗУЛЬТАТЫ
         </p>
-        <div className="rows flex flex-col gap-5">
+        <div className=" grid grid-cols-results gap-y-3 text-center">
           <ScoreRow
             place={"Место"}
             name={"Имя"}

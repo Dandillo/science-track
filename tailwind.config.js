@@ -7,6 +7,7 @@ module.exports = {
         // Complex site-specific column configuration
         login: "2fr 2fr 900px",
         game: "2fr 2fr 2fr",
+        results: "auto 3fr auto auto auto",
       },
       colors: {
         orangeColor: "#fb7a30",
