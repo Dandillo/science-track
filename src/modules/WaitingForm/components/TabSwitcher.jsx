@@ -5,6 +5,7 @@ import fileIcon from "../../../assets/svg/file.svg";
 import { waitingApi } from "../api/waitingApi";
 import Pagination from "../../../components/Pagination/Pagination";
 
+import { SiAddthis } from "react-icons/si";
 function toHoursAndMinutes(totalMinutes) {
   const minutes = totalMinutes % 60;
   const hours = Math.floor(totalMinutes / 60);
@@ -16,7 +17,7 @@ function padTo2Digits(num) {
   return num.toString().padStart(2, "0");
 }
 
-function TabSwitcher({ setInputGameId, handleConnectGame }) {
+function TabSwitcher({ setInputGameId, handleConnectGame, handleCreateGame }) {
   const columnsDependency = {
     1: "Войти",
     2: "Удалить",
@@ -63,66 +64,75 @@ function TabSwitcher({ setInputGameId, handleConnectGame }) {
 
   return (
     <div>
-      <div className="flex gap-7 flex-wrap">
-        <button
-          className={`${
-            activeTab === 1
-              ? "bg-orangeLightBGColor  text-orangeColor"
-              : "text-black bg-white"
-          } rounded-xl text-[2em] bg-opacity-88 border border-gray-300 flex gap-3 items-center px-2`}
-          onClick={() => handleTabClick(1)}
-        >
-          <div
-            className={`rounded-[10px]   text-[25px] text-center px-3 ${
+      <div className="flex justify-between">
+        <div className="flex gap-7 flex-wrap">
+          <button
+            className={`${
               activeTab === 1
-                ? "bg-orangeLighterColor  text-white"
-                : "text-black bg-lightGrayTransparentColor"
-            }`}
+                ? "bg-orangeLightBGColor  text-orangeColor"
+                : "text-black bg-white"
+            } rounded-xl text-[2em] bg-opacity-88 border border-gray-300 flex gap-3 items-center px-2`}
+            onClick={() => handleTabClick(1)}
           >
-            8
-          </div>
-          Активные
-        </button>
-        <button
-          className={`${
-            activeTab === 2
-              ? "bg-orangeLightBGColor  text-orangeColor"
-              : "text-black bg-white"
-          } rounded-xl text-[2em] bg-opacity-88 border border-gray-300 flex gap-3 items-center px-2`}
-          onClick={() => handleTabClick(2)}
-        >
-          <div
-            className={`rounded-[10px]   text-[25px] text-center px-3 ${
+            <div
+              className={`rounded-[10px]   text-[25px] text-center px-3 ${
+                activeTab === 1
+                  ? "bg-orangeLighterColor  text-white"
+                  : "text-black bg-lightGrayTransparentColor"
+              }`}
+            >
+              8
+            </div>
+            Активные
+          </button>
+          <button
+            className={`${
               activeTab === 2
-                ? "bg-orangeLighterColor  text-white"
-                : "text-black bg-lightGrayTransparentColor"
-            }`}
+                ? "bg-orangeLightBGColor  text-orangeColor"
+                : "text-black bg-white"
+            } rounded-xl text-[2em] bg-opacity-88 border border-gray-300 flex gap-3 items-center px-2`}
+            onClick={() => handleTabClick(2)}
           >
-            24
-          </div>
-          Ожидание
-        </button>
-        <button
-          className={`${
-            activeTab === 3
-              ? "bg-orangeLightBGColor  text-orangeColor"
-              : "text-black bg-white"
-          } rounded-xl text-[2em] bg-opacity-88 border border-gray-300 flex gap-3 items-center px-2`}
-          onClick={() => handleTabClick(3)}
-        >
-          <div
-            className={`rounded-[10px]   text-[25px] text-center px-3 ${
+            <div
+              className={`rounded-[10px]   text-[25px] text-center px-3 ${
+                activeTab === 2
+                  ? "bg-orangeLighterColor  text-white"
+                  : "text-black bg-lightGrayTransparentColor"
+              }`}
+            >
+              24
+            </div>
+            Ожидание
+          </button>
+          <button
+            className={`${
               activeTab === 3
-                ? "bg-orangeLighterColor  text-white"
-                : "text-black bg-lightGrayTransparentColor"
-            }`}
+                ? "bg-orangeLightBGColor  text-orangeColor"
+                : "text-black bg-white"
+            } rounded-xl text-[2em] bg-opacity-88 border border-gray-300 flex gap-3 items-center px-2`}
+            onClick={() => handleTabClick(3)}
           >
-            24
-          </div>
-          Архив
+            <div
+              className={`rounded-[10px]   text-[25px] text-center px-3 ${
+                activeTab === 3
+                  ? "bg-orangeLighterColor  text-white"
+                  : "text-black bg-lightGrayTransparentColor"
+              }`}
+            >
+              24
+            </div>
+            Архив
+          </button>
+        </div>
+
+        <button
+          onClick={handleCreateGame}
+          className="flex justify-center  rounded-xl text-[2em] bg-opacity-74 bg-orangeColor border border-gray-300 gap-3 items-center px-2 text-white hover:shadow-md hover:bg-orange-400 translate-x-2 transition-colors "
+        >
+          Создать
+          <SiAddthis />
         </button>
       </div>
-
       <div className=" drop-shadow-xl h-full bg-lightGrayTransparentColor w-full rounded-[20px] mt-[20px] flex flex-col justify-between ">
         <div className="grid grid-cols-5 justify-center justify-items-center items-center pt-[20px]">
           <div className="text-lightGrayColor">Игра</div>

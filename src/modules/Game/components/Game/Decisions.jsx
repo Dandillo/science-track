@@ -9,15 +9,17 @@ import SolutionsContainer from "./SolutionsContainer";
 import { useSelector } from "react-redux";
 import { gameApi } from "../../api/gameApi";
 
-function Decisions({ currentRound }) {
+function Decisions({ currentRound, currentStage }) {
   const [socialStatusAmount, setSocialStatusAmount] = useState();
   const [financeStatusAmount, setFinanceStatusAmount] = useState();
-  const [administrativeStatusAmount, setAdministrativeStatusAmount] = useState();
+  const [administrativeStatusAmount, setAdministrativeStatusAmount] =
+    useState();
 
   const userId = useSelector((state) => state.user.id);
 
   useEffect(() => {
     console.log(userId);
+    console.log("ROUND:" + JSON.stringify(currentRound));
     if (currentRound !== undefined) {
       gameApi
         .GetPlayerRoundStatusEvents(currentRound.id, userId)
@@ -62,7 +64,9 @@ function Decisions({ currentRound }) {
           </p>
         </StatContainer>
       </div>
-      <SolutionsContainer currentRound={currentRound} />
+      <SolutionsContainer
+        currentRound={currentRound}
+      />
     </div>
   );
 }

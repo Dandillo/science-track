@@ -16,6 +16,7 @@ import logo from "../../../assets/images/Logo.png";
 import GameLogo from "../../Game/components/Game/GameLogo";
 import Divider from "../../../components/Divider/Divider";
 import TabSwitcher from "./TabSwitcher";
+import Button from "../../../ui/Button";
 
 function WaitingForm() {
   // useAuthRedirect();
@@ -33,7 +34,7 @@ function WaitingForm() {
     WaitingService.createGame()
       .then((response) => {
         const gameID = response.data.id;
-        console.log(gameID);
+        alert(`Айди созданной игры: ${gameID}`);
         dispatch(setIdGame(gameID));
         WaitingService.addUser(gameID, userId)
           .then(() => {
@@ -78,12 +79,15 @@ function WaitingForm() {
           <RoundedContainer extraClasses="rounded-b-[50px] bg-opacity-[0.9] p-[30px] h-full bg-white ">
             <div className="flex flex-col">
               <GameLogo admin />
+
               <Divider className="mt-[41px]" width={"162px"} />
               <p className="text-darkGrayColor pt-5 text-[2.5em]">Комнаты</p>
+
               <TabSwitcher
                 setInputGameId={setInputGameId}
                 handleConnectGame={handleConnectGame}
                 userId={userId}
+                handleCreateGame={handleCreateGame}
               />
             </div>
           </RoundedContainer>
@@ -91,9 +95,32 @@ function WaitingForm() {
       ) : (
         <WaitingBG bg={bg}>
           <WhiteForm
-            title={`Ты в комнате №${12}`}
-            body="Игра скоро начнётся, ты уже ознакомился с правилами? Самое время сделать это сейчас!"
-          />
+            title={`
+              Привет, 
+              ${userOffName}
+             
+              `}
+            body=" Напиши номер комнаты, к которой нужно подключиться"
+          >
+            <div className="flex w-full justify-center pt-4">
+              <input
+                onInput={handleInput}
+                type="text"
+                className="border-b-2 border-grayColor bg-transparent block p-3 placeholder:text-lightGrayColor text-[25px]"
+                placeholder="№ КОМНАТЫ"
+              />
+              <div className="button-container p-1 border-2 border-grayColor rounded-br-[50px] rounded-tl-[50px] w-full">
+                <Button
+                  onClick={handleConnectGame}
+                  className={
+                    "bg-orangeColor font-[400] text-[1rem] text-white w-full h-[60px] border-0 hover:bg-orange-500 transition-colors"
+                  }
+                >
+                  ПРИСОЕДИНИТЬСЯ
+                </Button>
+              </div>
+            </div>
+          </WhiteForm>
         </WaitingBG>
       )}
     </>

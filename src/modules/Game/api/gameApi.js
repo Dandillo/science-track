@@ -1,13 +1,12 @@
 ﻿import $api from "../../../http/api";
-const getSolutions = async (pageNum, pageSize) => {
+const getSolutions = async (stageId) => {
   try {
-    const { data, headers } = await $api.get("/Game/GetSolutions", {
+    const { data } = await $api.get("/Game/GetSolutions", {
       params: {
-        pageNum: pageNum,
-        pageSize: pageSize,
+        stage: stageId,
       },
     });
-    return { data, headers };
+    return { data };
   } catch (error) {
     throw error.response.data;
   }

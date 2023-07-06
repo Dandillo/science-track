@@ -13,6 +13,7 @@ import "./css/game.css";
 export default function Game() {
   const [timer, setTimer] = useState(0);
   const [currentRound, setCurrentRound] = useState();
+  const [currentStage, setCurrentStage] = useState();
   const [stageDisc, setStageDisc] = useState(
     "Игрок с высоким социальным статусом обычно обладает огромным количеством связей и знакомств в различных сферах жизни. Он умеет держать себя в обществе и производить благоприятное впечатление на окружающих"
   );
@@ -32,6 +33,7 @@ export default function Game() {
         navigate(`/results/${idGame}`);
       }
       setCurrentRound(round);
+      setCurrentStage(round.stage);
       setStageDisc(round.stageDisc);
       setStagePicture(API_URL + round.picture);
     };
@@ -53,7 +55,6 @@ export default function Game() {
   return (
     <GameBackground className=" p-[1.2rem]   h-full gap-x-4	 ">
       <GameChanges currentRound={currentRound} handleStart={handleStart} />
-
       <Player
         currentRound={currentRound != undefined ? currentRound.age : 19}
         timer={timer}
