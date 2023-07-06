@@ -122,14 +122,14 @@ function SolutionsContainer({ currentRound }) {
 
   return (
     ready && (
-      <EventContainer title={"Выберите одно решение"} className={"w-full"}>
+      <EventContainer title={"Выберите одно решение"} className={"w-full flex-grow"}>
         <SimpleBar
           className={
             isSent
               ? "flex flex-col gap-2 text-gray-600 justify-between pointer-events-none	"
               : "flex flex-col gap-3 text-gray-600 justify-between"
           }
-          style={{ maxHeight: "38rem" }}
+          style={{maxBlockSize:'38rem'}}
           forceVisible="y"
           autoHide={true}
         >

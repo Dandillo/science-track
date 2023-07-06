@@ -24,6 +24,7 @@ export default function Game() {
       console.log(time);
       setTimer(time);
     };
+    console.log("GAME:" + idGame);
 
     const handleNewRound = (round) => {
       console.log(round);
@@ -50,7 +51,7 @@ export default function Game() {
   };
 
   return (
-    <GameBackground className="flex h-full  justify-items-center p-[1.2rem] items-center w-full gap-3 ">
+    <GameBackground className=" p-[1.2rem]   h-full gap-x-4	 ">
       <GameChanges currentRound={currentRound} handleStart={handleStart} />
 
       <Player

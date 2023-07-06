@@ -1,6 +1,6 @@
 ﻿import React from "react";
 
-const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
+const Pagination = ({ currentPage, totalPages, setCurrentPage,className }) => {
   const handlePageChange = (e) => {
     const newPage = parseInt(e.target.id);
     if (newPage !== currentPage) {
@@ -21,12 +21,12 @@ const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
     }
   };
   return (
-    <div className="flex items-center justify-center mt-4">
+    <div className={`flex items-center justify-center mt-4 ${className}`}>
       <nav className="relative z-0 inline-flex rounded-md shadow-sm">
         <button
           disabled={currentPage === 1}
           onClick={handlePrevPage}
-          className=" border-transparent border hover:border-gray-300 relative inline-flex items-center px-2 py-2 rounded-l-md  text-[36px] bg-white text-sm font-medium text-darkGrayColor hover:bg-gray-50"
+          className=" border-transparent border font-bold hover:border-gray-300 relative inline-flex items-center px-2 py-2 rounded-l-md  text-[36px] text-sm text-darkGrayColor hover:bg-gray-50"
         >
           &lt;
         </button>
@@ -39,8 +39,8 @@ const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
                 id={index + 1}
                 className={
                   currentPage === index + 1
-                    ? "px-3 py-2 border border-gray-300 text-sm  text-darkGrayColor text-[36px] bg-gray-50 font-regular"
-                    : "text-darkGrayColor  border-transparent border hover:border-gray-300 relative inline-flex items-center px-3 py-2   bg-white text-sm font-medium text-[32px] hover:bg-gray-50"
+                    ? "px-3 py-2 border border-gray-300 text-sm  text-darkGrayColor text-[36px]  font-bold"
+                    : "text-darkGrayColor border-transparent border hover:border-gray-900 relative inline-flex items-center px-3 py-2  font-bold text-sm  text-[32px]"
                 }
               >
                 {index + 1}
@@ -52,7 +52,7 @@ const Pagination = ({ currentPage, totalPages, setCurrentPage }) => {
         <button
           disabled={currentPage === totalPages}
           onClick={handleNextPage}
-          className="text-darkGrayColor  border-transparent border hover:border-gray-300 relative inline-flex items-center px-2 py-2 rounded-r-md   bg-white text-sm font-medium text-[36px] hover:bg-gray-50"
+          className="text-darkGrayColor  border-transparent border hover:border-gray-300 relative inline-flex items-center px-2 py-2 rounded-r-md font-bold text-sm text-[36px] hover:bg-gray-50"
         >
           &gt;
         </button>

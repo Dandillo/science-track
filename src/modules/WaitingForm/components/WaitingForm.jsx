@@ -29,7 +29,7 @@ function WaitingForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate(null);
   const handleCreateGame = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     WaitingService.createGame()
       .then((response) => {
         const gameID = response.data.id;
@@ -51,11 +51,12 @@ function WaitingForm() {
   };
 
   const handleConnectGame = (e) => {
-    WaitingService.addUser(inputGameId, userId)
+    const gameIdPlayer = e.target.id ? e.target.id : inputGameId;
+    WaitingService.addUser(gameIdPlayer, userId)
       .then(() => {
-        dispatch(setIdGame(inputGameId));
-        hubConnection.invoke("RemoveFromGroup", String(inputGameId));
-        hubConnection.invoke("AddToGroup", String(inputGameId));
+        dispatch(setIdGame(gameIdPlayer));
+        hubConnection.invoke("RemoveFromGroup", String(gameIdPlayer));
+        hubConnection.invoke("AddToGroup", String(gameIdPlayer));
 
         navigate("/game");
       })
@@ -72,27 +73,31 @@ function WaitingForm() {
 
   return (
     <>
-      {/* {role === "admin" ? ( */}
-        <WaitingBG bg={bgAdmin} className="flex justify-center h-full w-full">
+      {role === "admin" ? (
+        <WaitingBG bg={bgAdmin} className="flex justify-center  w-full ">
           <RoundedContainer extraClasses="rounded-b-[50px] bg-opacity-[0.9] p-[30px] h-full bg-white ">
-            <div className="flex justify-start flex-col">
+            <div className="flex flex-col">
               <GameLogo admin />
               <Divider className="mt-[41px]" width={"162px"} />
               <p className="text-darkGrayColor pt-5 text-[2.5em]">Комнаты</p>
-              <TabSwitcher />
+              <TabSwitcher
+                setInputGameId={setInputGameId}
+                handleConnectGame={handleConnectGame}
+                userId={userId}
+              />
             </div>
           </RoundedContainer>
         </WaitingBG>
-      
+      ) : (
+        <WaitingBG bg={bg}>
+          <WhiteForm
+            title={`Ты в комнате №${12}`}
+            body="Игра скоро начнётся, ты уже ознакомился с правилами? Самое время сделать это сейчас!"
+          />
+        </WaitingBG>
+      )}
     </>
   );
 }
-// ) : (
-      //   <WaitingBG bg={bg}>
-      //     <WhiteForm
-      //       title={`Ты в комнате №${12}`}
-      //       body="Игра скоро начнётся, ты уже ознакомился с правилами? Самое время сделать это сейчас!"
-      //     />{" "}
-      //   </WaitingBG>
-      // )}
+
 export default WaitingForm;

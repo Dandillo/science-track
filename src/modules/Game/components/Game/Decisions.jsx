@@ -32,7 +32,7 @@ function Decisions({ currentRound }) {
   }, [currentRound]);
 
   return (
-    <div className="flex flex-col h-full items-center gap-y-[3rem] w-1/3 flex-grow ">
+    <div className="flex flex-col items-center gap-y-[3rem] justify-center flex-grow w-1/3">
       <div className="statistics flex gap-3 ">
         <StatContainer
           title={"Социальный статус"}
