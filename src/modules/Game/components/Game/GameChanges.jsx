@@ -5,7 +5,7 @@ import GameLogo from "./GameLogo";
 import StartIcon from "../../../../assets/svg/Start.svg";
 import { useSelector } from "react-redux";
 import { gameApi } from "../../api/gameApi";
-function GameChanges({ currentRound, handleStart }) {
+function GameChanges({ currentRound, handleStart, started }) {
   const [localChange, setLocalChange] = useState(
     "Обучение студентов и молодых ученых в рамках научных семинаров и курсов. Которые потенциально станут его последователями"
   );
@@ -28,14 +28,14 @@ function GameChanges({ currentRound, handleStart }) {
         })
         .catch((err) => console.error(err));
     }
-  }, [currentRound]);
+  }, [currentRound,started]);
 
   return (
     <div className="flex flex-col gap-y-[1rem] h-full justify-center flex-grow w-1/3 content-between	">
       <div className="flex justify-between">
         <GameLogo />
         <button
-          hidden={role !== "admin"}
+          hidden={role !== "admin" || started}
           className="hover:scale-105	 hover:transform"
           onClick={handleStart}
         >

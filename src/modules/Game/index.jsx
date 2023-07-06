@@ -19,6 +19,7 @@ export default function Game() {
   );
   const [stagePicture, setStagePicture] = useState(playerImg);
   const idGame = useSelector((state) => state.game.idGame);
+  const [started, setStarted] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     const handleCurrentTime = (time) => {
@@ -45,6 +46,7 @@ export default function Game() {
 
   const handleStart = () => {
     hubConnection.invoke("StartGame", idGame);
+    setStarted(true);
   };
   const handleAddGroupStart = () => {
     hubConnection.invoke("RemoveFromGroup", String(idGame));
@@ -54,7 +56,11 @@ export default function Game() {
 
   return (
     <GameBackground className=" p-[1.2rem]   h-full gap-x-4	 ">
-      <GameChanges currentRound={currentRound} handleStart={handleStart} />
+      <GameChanges
+        currentRound={currentRound}
+        handleStart={handleStart}
+        started={started}
+      />
       <Player
         currentRound={currentRound != undefined ? currentRound.age : 19}
         timer={timer}

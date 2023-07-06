@@ -102,8 +102,7 @@ function SolutionsContainer({ currentStage, currentRound }) {
   const [isSent, setIsSent] = useState(false);
 
   useEffect(() => {
-    setIsSent(false);
-    dispatch(setLocalSolution(""));
+   
     console.log("RUND SOLUTIONT:");
     console.log(currentRound);
     console.log("STAGE:" + currentStage);
@@ -116,9 +115,11 @@ function SolutionsContainer({ currentStage, currentRound }) {
           setReady(true);
         })
         .catch((err) => console.error(err));
+  }, [currentRound,isSent]);
+  useEffect(() => {
+    setIsSent(false);
+    dispatch(setLocalSolution(""));
   }, [currentRound]);
-
-
 
   return (
     <EventContainer
