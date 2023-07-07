@@ -11,7 +11,7 @@ function LocalSolutionEvent({ solution, setIsSent, currentRound }) {
   const userId = useSelector((state) => state.user.id);
   const dispatch = useDispatch();
 
-  const handleSolutionClick = () => {
+  const resetLocalSolutionEvent = () => {
     if (lastLocalSolutionId) {
       const lastLocalSolution = document.getElementById(lastLocalSolutionId);
       if (lastLocalSolution) {
@@ -19,6 +19,11 @@ function LocalSolutionEvent({ solution, setIsSent, currentRound }) {
         lastLocalSolution.style.color = "#4b5563";
       }
     }
+    setIsSent(false);
+  }
+
+  const handleSolutionClick = () => {
+    resetLocalSolutionEvent();
     if (lastLocalSolutionId === localEventRef.current.id) {
       localEventRef.current.style.borderColor = "#68D391";
       localEventRef.current.style.color = "#68D391";
