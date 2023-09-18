@@ -17,6 +17,7 @@ import GameLogo from "../../Game/components/Game/GameLogo";
 import Divider from "../../../components/Divider/Divider";
 import TabSwitcher from "./TabSwitcher";
 import Button from "../../../ui/Button";
+import './WaitingForm.scss';
 
 function WaitingForm() {
   // useAuthRedirect();
@@ -75,13 +76,13 @@ function WaitingForm() {
   return (
     <>
       {role === "admin" ? (
-        <WaitingBG bg={bgAdmin} className="flex justify-center  w-full ">
+        <WaitingBG bg={bgAdmin} className="flex justify-center w-full ">
           <RoundedContainer extraClasses="rounded-b-[50px] bg-opacity-[0.9] p-[30px] h-full bg-white ">
             <div className="flex flex-col">
               <GameLogo admin />
 
-              <Divider className="mt-[41px]" width={"162px"} />
-              <p className="text-darkGrayColor pt-5 text-[2.5em]">Комнаты</p>
+              <Divider className="divider mt-[41px]" width={"162px"} />
+              <p className="p-divider text-darkGrayColor pt-5 text-[2.5em]">Комнаты</p>
 
               <TabSwitcher
                 setInputGameId={setInputGameId}

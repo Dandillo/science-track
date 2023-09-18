@@ -60,31 +60,31 @@ let persistor = persistStore(store)
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LoginFormPage />,
+    element: <LoginFormPage/>,
   },
   {
     path: "/waiting",
-    element: <Waiting />,
+    element: <Waiting/>,
   },
   {
     path: "/game",
-    element: <Game  />,
+    element: <Game/>,
   },
   {
     path: "/results/:gameId",
-    element: <Result />,
+    element: <Result/>,
   },
   {
     path: "/choose",
-    element: <Choose />,
+    element: <Choose/>,
   },
   {
     path: "/test",
-    element: <Test />,
+    element: <Test/>,
   },
   {
     path: "*",
-    element: <NotFound />,
+    element: <NotFound/>,
   },
 ]);
 

@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setName, setRole, setOffName, setId } from "../../store/UserStore";
 import AuthServices from "../../services/AuthServices";
+import './LoginForm.scss';
 
 const LoginForm = () => {
   const navigate = useNavigate(null);
@@ -22,7 +23,9 @@ const LoginForm = () => {
         dispatch(setOffName(response.data.officialName));
         dispatch(setRole(response.data.role));
         dispatch(setId(response.data.userId));
-        window.location.replace("/waiting");
+        // window.location.replace("/waiting");
+        console.log('NAVIGATE');
+        navigate("/waiting")
       })
       .catch(() => {
         console.log("error");
@@ -43,19 +46,19 @@ const LoginForm = () => {
     <div
       className="bg-white text-grayColor flex flex-col items-center gap-4
      w-full px-[100px] justify-center h-full pt-[40px]">
-      <div className="flex flex-col gap-12 items-center"> {/* app-descr */}
+      <div className="title-block flex flex-col gap-12 items-center"> {/* app-descr */}
         <h1 className="text-6xl font-semibold">SCIENCE TRACK</h1>
         <p className="text-3xl text-center">
           Выбирайте карточки и развивайте свой персональный профиль в
           социологической игре!
         </p>
       </div>
-      <p className="form-heading text-5xl ">Авторизация</p>
+      <p className="auth form-heading text-5xl ">Авторизация</p>
       <form
         onSubmit={handleLogin}
-        className=" flex flex-col gap-[40px] w-[80%]"
+        className="form flex flex-col gap-[40px] w-[80%]"
       >
-        <div className="input-container  ">
+        <div className="form__login input-container">
           <p className="inputLabel text-3xl">
             Твой логин<span className="text-redColor">*</span>:
           </p>
@@ -68,7 +71,7 @@ const LoginForm = () => {
             placeholder="Введи свой логин..."
           />
         </div>
-        <div className="input-container w-full">
+        <div className="form__pass input-container w-full">
           <p className="inputLabel text-3xl ">
             Твой пароль<span className="text-redColor">*</span>:
           </p>
@@ -83,7 +86,7 @@ const LoginForm = () => {
         </div>
         <Button
           type="submit"
-          className="bg-gradient-to-br from-orange-600 via-orange-500 to-orange-600	
+          className="form__submit bg-gradient-to-br from-orange-600 via-orange-500 to-orange-600	
           h-[65px] text-white font-400 text-3xl	uppercase hover:bg-orangeColor hover:bg-none transition-bg ease-in"
         >
           Войти

@@ -30,6 +30,7 @@ function TabSwitcher({ setInputGameId, handleConnectGame, handleCreateGame }) {
   const handleTabClick = (tabIndex) => {
     setActiveTab(tabIndex);
   };
+
   useEffect(() => {
     switch (activeTab) {
       case 1: {

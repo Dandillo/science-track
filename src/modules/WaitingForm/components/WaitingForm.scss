@@ -1,0 +1,12 @@
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25),
+    only screen and (-o-min-device-pixel-ratio: 5/4),
+    only screen and (min-resolution: 120dpi),
+    only screen and (min-resolution: 1.25dppx) {
+    .divider {
+        @apply mt-[35px] w-[130px];
+    }
+
+    .p-divider {
+        @apply text-[2em];
+    }
+}
