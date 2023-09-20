@@ -10,6 +10,13 @@ function LocalSolutionEvent({ solution, setIsSent, currentRound }) {
   );
   const userId = useSelector((state) => state.user.id);
   const dispatch = useDispatch();
+  useEffect(() => {
+    localEventRef.current.style.borderColor = "rgb(156 163 175)";
+    localEventRef.current.style.color = "#4b5563";
+    return () => {
+      dispatch(setLastLocalEventRef(null));
+    };
+  }, [currentRound]);
 
   const resetLocalSolutionEvent = () => {
     if (lastLocalSolutionId) {

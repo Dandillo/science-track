@@ -12,6 +12,7 @@ const ProgressCircle = ({ roundNumber, progress }) => {
         </linearGradient>
       </defs>
       <circle
+        transform="rotate(-90 55 55)"
         cx="55"
         cy="55"
         r="50.5"
@@ -21,7 +22,7 @@ const ProgressCircle = ({ roundNumber, progress }) => {
         strokeLinecap="round"
         style={{
           strokeDasharray: "360",
-          strokeDashoffset: `${360 - (360 * progress) / 100}`,
+          strokeDashoffset: `${360 - (progress * 360) / 119}`,
           transition: "stroke-dashoffset 0.5s ease",
         }}
       />
