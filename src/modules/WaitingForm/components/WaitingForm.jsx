@@ -77,11 +77,12 @@ function WaitingForm() {
     <>
       {role === "admin" ? (
         <WaitingBG bg={bgAdmin} className="flex justify-center w-full ">
-          <RoundedContainer extraClasses="rounded-b-[50px] bg-opacity-[0.9] p-[30px] h-full bg-white ">
+          {/* bg-opacity-[0.9] */}
+          <RoundedContainer extraClasses="rounded-b-[50px] p-[30px] h-full bg-white/[.75]">
             <div className="flex flex-col">
               <GameLogo admin />
 
-              <Divider className="divider mt-[41px]" width={"162px"} />
+              <Divider className="divider mt-[41px] rounded-xl" width={"162px"} />
               <p className="p-divider text-darkGrayColor pt-5 text-[2.5em]">Комнаты</p>
 
               <TabSwitcher

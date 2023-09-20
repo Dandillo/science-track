@@ -2,11 +2,11 @@
     only screen and (-o-min-device-pixel-ratio: 5/4),
     only screen and (min-resolution: 120dpi),
     only screen and (min-resolution: 1.25dppx) {
-    .divider {
-        @apply mt-[35px] w-[130px];
-    }
+    .header-button {
+        @apply text-[1.5em] gap-2;
 
-    .p-divider {
-        @apply text-[2em];
+        &__num {
+            @apply text-[20px];
+        }
     }
 }

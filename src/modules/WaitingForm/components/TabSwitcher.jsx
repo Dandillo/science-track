@@ -4,6 +4,7 @@ import enterIcon from "../../../assets/svg/enter.svg";
 import fileIcon from "../../../assets/svg/file.svg";
 import { waitingApi } from "../api/waitingApi";
 import Pagination from "../../../components/Pagination/Pagination";
+import './TabSwitcher.scss';
 
 import { SiAddthis } from "react-icons/si";
 function toHoursAndMinutes(totalMinutes) {
@@ -68,7 +69,7 @@ function TabSwitcher({ setInputGameId, handleConnectGame, handleCreateGame }) {
       <div className="flex justify-between">
         <div className="flex gap-7 flex-wrap">
           <button
-            className={`${
+            className={`header-button ${
               activeTab === 1
                 ? "bg-orangeLightBGColor  text-orangeColor"
                 : "text-black bg-white"
@@ -76,7 +77,7 @@ function TabSwitcher({ setInputGameId, handleConnectGame, handleCreateGame }) {
             onClick={() => handleTabClick(1)}
           >
             <div
-              className={`rounded-[10px]   text-[25px] text-center px-3 ${
+              className={`header-button__num rounded-[10px] text-[25px] text-center px-3 ${
                 activeTab === 1
                   ? "bg-orangeLighterColor  text-white"
                   : "text-black bg-lightGrayTransparentColor"
@@ -87,7 +88,7 @@ function TabSwitcher({ setInputGameId, handleConnectGame, handleCreateGame }) {
             Активные
           </button>
           <button
-            className={`${
+            className={`header-button ${
               activeTab === 2
                 ? "bg-orangeLightBGColor  text-orangeColor"
                 : "text-black bg-white"
@@ -95,7 +96,7 @@ function TabSwitcher({ setInputGameId, handleConnectGame, handleCreateGame }) {
             onClick={() => handleTabClick(2)}
           >
             <div
-              className={`rounded-[10px]   text-[25px] text-center px-3 ${
+              className={`header-button__num rounded-[10px] text-[25px] text-center px-3 ${
                 activeTab === 2
                   ? "bg-orangeLighterColor  text-white"
                   : "text-black bg-lightGrayTransparentColor"
@@ -106,7 +107,7 @@ function TabSwitcher({ setInputGameId, handleConnectGame, handleCreateGame }) {
             Ожидание
           </button>
           <button
-            className={`${
+            className={`header-button ${
               activeTab === 3
                 ? "bg-orangeLightBGColor  text-orangeColor"
                 : "text-black bg-white"
@@ -114,7 +115,7 @@ function TabSwitcher({ setInputGameId, handleConnectGame, handleCreateGame }) {
             onClick={() => handleTabClick(3)}
           >
             <div
-              className={`rounded-[10px]   text-[25px] text-center px-3 ${
+              className={`header-button__num rounded-[10px] text-[25px] text-center px-3 ${
                 activeTab === 3
                   ? "bg-orangeLighterColor  text-white"
                   : "text-black bg-lightGrayTransparentColor"
@@ -128,7 +129,7 @@ function TabSwitcher({ setInputGameId, handleConnectGame, handleCreateGame }) {
 
         <button
           onClick={handleCreateGame}
-          className="flex justify-center  rounded-xl text-[2em] bg-opacity-74 bg-orangeColor border border-gray-300 gap-3 items-center px-2 text-white hover:shadow-md hover:bg-orange-400 translate-x-2 transition-colors "
+          className="header-button flex justify-center  rounded-xl text-[2em] bg-opacity-74 bg-orangeColor border border-gray-300 gap-3 items-center px-2 text-white hover:shadow-md hover:bg-orange-400 translate-x-2 transition-colors "
         >
           Создать
           <SiAddthis />
