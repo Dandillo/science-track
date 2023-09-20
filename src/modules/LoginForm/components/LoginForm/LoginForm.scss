@@ -17,14 +17,14 @@
     }
 
     .form {
-        @apply gap-[20px] w-[80%];
+        @apply gap-[20px] w-[80%] flex;
 
         &__login {
             p {
                 @apply text-xl;
             }
             input {
-                @apply text-xl h-[50px];
+                @apply h-[50px] text-xl;
             }
         }
 
@@ -33,7 +33,7 @@
                 @apply text-xl;
             }
             input {
-                @apply text-xl h-[50px];
+                @apply h-[50px] text-xl;
             }
         }
 

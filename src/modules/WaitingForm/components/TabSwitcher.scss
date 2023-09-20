@@ -6,7 +6,7 @@
         @apply text-[1.5em] gap-2;
 
         &__num {
-            @apply text-[20px];
+            @apply text-[20px] flex;
         }
     }
 }

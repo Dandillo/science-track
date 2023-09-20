@@ -3,10 +3,10 @@
     only screen and (min-resolution: 120dpi),
     only screen and (min-resolution: 1.25dppx) {
     .divider {
-        @apply mt-[35px] w-[130px];
+        @apply mt-[35px] w-[130px] flex;
     }
 
     .p-divider {
-        @apply text-[2em];
+        @apply text-[2em] flex;
     }
 }
