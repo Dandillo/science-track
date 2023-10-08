@@ -1,0 +1,58 @@
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25),
+only screen and (-o-min-device-pixel-ratio: 5/4),
+only screen and (min-resolution: 120dpi),
+only screen and (min-resolution: 1.25dppx) {
+  .start-button {
+    @apply h-[50px];
+  }
+
+  .round-circle {
+    &__left-right {
+      @apply w-[50px] h-[50px] text-[1.3rem];
+    }
+
+    &__center {
+      transform: scale(0.75);
+    }
+  }
+
+  .text-header {
+    @apply text-[1.5rem];
+
+    &__padding {
+      @apply py-[0.6rem];
+    }
+  }
+
+  .text-container {
+    @apply text-[15px] py-[15px];
+  }
+
+  .solution {
+    &__card-block {
+      @apply text-[15px] p-[0.4rem] border-[3px];
+    }
+
+    &__container {
+     @apply max-h-[28rem];
+    }
+  }
+
+  .stat {
+    @apply w-[55px] rounded-2xl;
+
+    &__info {
+      @apply p-2;
+    }
+  }
+
+  .decisions-block {
+    @apply gap-y-[1rem];
+  }
+
+  .player {
+    &__img {
+      @apply h-[24rem];
+    }
+  }
+}

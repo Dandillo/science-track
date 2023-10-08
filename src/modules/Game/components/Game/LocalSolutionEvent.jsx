@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setLastLocalEventRef } from "../../store/GameStore";
 import { gameApi } from "../../api/gameApi";
+import './GameAdaptive.scss';
 
 function LocalSolutionEvent({ solution, setIsSent, currentRound }) {
   const localEventRef = useRef(null);
@@ -46,7 +47,8 @@ function LocalSolutionEvent({ solution, setIsSent, currentRound }) {
   return (
     <div
       onClick={handleSolutionClick}
-      className="border-solid border-[5px] border-gray-400 p-[0.7rem] hover:cursor-pointer mb-2"
+      className="border-solid border-[5px] border-gray-400 p-[0.7rem] hover:cursor-pointer mb-2
+      solution__card-block"
       ref={localEventRef}
       id={solution.id}
     >

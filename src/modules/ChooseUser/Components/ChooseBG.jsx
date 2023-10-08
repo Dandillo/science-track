@@ -9,7 +9,7 @@ function ChooseBG({children}) {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
         }}
-            className="h-full w-full z-0"
+            className="h-full w-full z-10"
         >
             {children}
         </div>

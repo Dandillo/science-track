@@ -9,6 +9,8 @@ import SolutionsContainer from "./SolutionsContainer";
 import { useSelector } from "react-redux";
 import { gameApi } from "../../api/gameApi";
 
+import './GameAdaptive.scss';
+
 function Decisions({ currentRound, currentStage }) {
   const [socialStatusAmount, setSocialStatusAmount] = useState();
   const [financeStatusAmount, setFinanceStatusAmount] = useState();
@@ -34,7 +36,7 @@ function Decisions({ currentRound, currentStage }) {
   }, [currentRound]);
 
   return (
-    <div className="flex flex-col items-center gap-y-[3rem] justify-center flex-grow w-1/3">
+    <div className="flex flex-col items-center gap-y-[3rem] justify-center flex-grow w-1/3 mb-auto decisions-block">
       <div className="statistics flex gap-3 ">
         <StatContainer
           title={"Социальный статус"}

@@ -9,4 +9,14 @@
     .p-divider {
         @apply text-[2em] flex;
     }
+
+    .game-logo {
+        img {
+            @apply h-[70px];
+        }
+
+        p {
+            @apply text-xl;
+        }
+    }
 }

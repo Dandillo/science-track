@@ -1,0 +1,28 @@
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25),
+only screen and (-o-min-device-pixel-ratio: 5/4),
+only screen and (min-resolution: 120dpi),
+only screen and (min-resolution: 1.25dppx) {
+  .white-form {
+    @apply w-[530px] h-auto -translate-y-6 p-12 ml-auto mr-16;
+
+    &__logo-img {
+      @apply h-[75px];
+    }
+
+    &__logo-text {
+      @apply text-3xl;
+    }
+
+    &__delimiter {
+      @apply my-6 w-[180px] h-1;
+    }
+
+    &__title {
+      @apply text-5xl mb-6
+    }
+
+    &__description-text {
+      @apply text-2xl;
+    }
+  }
+}

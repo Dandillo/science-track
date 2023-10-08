@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLocalSolution } from "../../store/GameStore";
 import SimpleBar from "simplebar-react";
 import LocalSolutionEvent from "./LocalSolutionEvent";
+import './GameAdaptive.scss';
 
 function SolutionsContainer({ currentStage, currentRound }) {
   const [data, setData] = useState([
@@ -129,10 +130,10 @@ function SolutionsContainer({ currentStage, currentRound }) {
       <SimpleBar
         className={
           isSent
-            ? "flex flex-col gap-2 text-gray-600 justify-between pointer-events-none	"
-            : "flex flex-col gap-3 text-gray-600 justify-between "
+            ? "flex flex-col gap-2 text-gray-600 justify-between pointer-events-none max-h-[38rm] solution__container"
+            : "flex flex-col gap-3 text-gray-600 justify-between max-h-[38rm] solution__container"
         }
-        style={{ maxBlockSize: "38rem" }}
+        // style={{ maxBlockSize: "38rem" }}
         forceVisible="y"
         autoHide={true}
       >

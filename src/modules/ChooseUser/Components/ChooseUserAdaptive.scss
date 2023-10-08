@@ -1,0 +1,24 @@
+@media only screen and (-webkit-min-device-pixel-ratio: 1.25),
+only screen and (-o-min-device-pixel-ratio: 5/4),
+only screen and (min-resolution: 120dpi),
+only screen and (min-resolution: 1.25dppx) {
+  .send-input {
+    @apply mt-8;
+
+    input {
+      @apply pb-1 text-xl border-b-[2px];
+      transform: translateY(6px);
+    }
+
+    button {
+      @apply text-[15px] px-5 py-1;
+      &:before {
+        @apply -top-[4px] -left-[4px] -right-[4px] -bottom-[4px] border-[2px];
+      }
+    }
+
+    p {
+
+    }
+  }
+}

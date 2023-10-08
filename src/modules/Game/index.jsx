@@ -15,7 +15,9 @@ export default function Game() {
   const [currentRound, setCurrentRound] = useState();
   const [currentStage, setCurrentStage] = useState();
   const [stageDisc, setStageDisc] = useState(
-    "Игрок с высоким социальным статусом обычно обладает огромным количеством связей и знакомств в различных сферах жизни. Он умеет держать себя в обществе и производить благоприятное впечатление на окружающих"
+    "Игрок с высоким социальным статусом обычно обладает огромным количеством " +
+      "связей и знакомств в различных сферах жизни. Он умеет держать себя в обществе и " +
+      "производить благоприятное впечатление на окружающих"
   );
   const [stagePicture, setStagePicture] = useState(playerImg);
   const idGame = useSelector((state) => state.game.idGame);
@@ -55,7 +57,7 @@ export default function Game() {
   };
 
   return (
-    <GameBackground className=" p-[1.2rem]   h-full gap-x-4	 ">
+    <GameBackground className="p-[1.2rem] h-full gap-x-4">
       <GameChanges
         currentRound={currentRound}
         handleStart={handleStart}

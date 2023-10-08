@@ -2,7 +2,7 @@
 
 const ProgressCircle = ({ roundNumber, progress }) => {
   return (
-    <svg className="progress-circle" width="110" height="110">
+    <svg className="progress-circle round-circle__center" width="110" height="110">
       <defs>
         <linearGradient id="gradient" gradientTransform="rotate(45)">
           <stop offset="0%" stopColor="#FFA164" />

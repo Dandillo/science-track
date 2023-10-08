@@ -6,13 +6,13 @@ import ProgressCircle from "../../components/EventContainer/ProgressCircle";
 function Test() {
   const [testProgress, setTestProgress] = useState(0);
   return (
-    <div className="test">
+    <div className="test bg-blue-950">
       <input
         style={{ border: "1px solid black" }}
         type="number"
         name=""
         id=""
-        onClick={(e) => setTestProgress(e.target.value)}
+        onChange={(e) => setTestProgress(e.target.value)}
       />
       <ProgressCircle roundNumber={34} progress={testProgress} />
     </div>
