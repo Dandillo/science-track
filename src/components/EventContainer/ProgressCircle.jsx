@@ -1,8 +1,13 @@
-﻿import React from "react";
+﻿import React, { useEffect } from "react";
 
 const ProgressCircle = ({ roundNumber, progress }) => {
+  const redColor = "#ff2e2e";
   return (
-    <svg className="progress-circle round-circle__center" width="110" height="110">
+    <svg
+      className="progress-circle round-circle__center"
+      width="110"
+      height="110"
+    >
       <defs>
         <linearGradient id="gradient" gradientTransform="rotate(45)">
           <stop offset="0%" stopColor="#FFA164" />
@@ -16,7 +21,7 @@ const ProgressCircle = ({ roundNumber, progress }) => {
         cx="55"
         cy="55"
         r="50.5"
-        fill="#FFF"
+        fill={"#FFF"}
         stroke="url(#gradient)"
         strokeWidth="7"
         strokeLinecap="round"
@@ -25,7 +30,17 @@ const ProgressCircle = ({ roundNumber, progress }) => {
           strokeDashoffset: `${360 - (progress * 360) / 119}`,
           transition: "stroke-dashoffset 0.5s ease",
         }}
-      />
+      >
+        {progress >= 95 ? (
+          <animate
+            attributeType="XML"
+            attributeName="fill"
+            values="#800;#f00;#800;#800"
+            dur="1s"
+            repeatCount="indefinite"
+          />
+        ) : null}
+      </circle>
       <text
         x="50%"
         y="50%"

@@ -133,7 +133,7 @@ function SolutionsContainer({ currentStage, currentRound }) {
             ? "flex flex-col gap-2 text-gray-600 justify-between pointer-events-none max-h-[38rm] solution__container"
             : "flex flex-col gap-3 text-gray-600 justify-between max-h-[38rm] solution__container"
         }
-        // style={{ maxBlockSize: "38rem" }}
+        style={{ maxBlockSize: "38rem" }}
         forceVisible="y"
         autoHide={true}
       >
