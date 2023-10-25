@@ -1,13 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useRef, useState} from "react";
 import "./Test.scss";
-import image from "../../assets/images/MainPhoto.png";
 import ProgressCircle from "../../components/EventContainer/ProgressCircle";
-import useSound from "use-sound";
-import alarm from "./alarm.mp3";
 import EventContainer from "../../components/EventContainer/EventContainer";
+
 function Test() {
-  const [testProgress, setTestProgress] = useState(90);
-  const EventTESTCANTAINER = useRef();
   return (
     <div className="test bg-blue-950">
       <input
@@ -15,13 +11,9 @@ function Test() {
         type="number"
         name=""
         id=""
-        onChange={(e) => {
-          console.log(EventTESTCANTAINER.current);
-        }}
+        onChange={(e) => e.preventDefault()}
       />
-      <ProgressCircle roundNumber={34} progress={testProgress} />
       <EventContainer
-        ref={EventTESTCANTAINER}
         maxHeight={220}
         title={"Глобальные изменения"}
         info={`В вашем научном коллективе преобладала дружеская атмосфера и взаимопонимание 

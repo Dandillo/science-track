@@ -15,16 +15,14 @@ const EventContainer = ({
   const scrollToTop = () => {
     // simpleBarRef.current.contentEl.clientTop = 0;
     console.log(simpleBarRef.current);
-    simpleBarRef.current.scrollY();
   };
   const orangeColor = "bg-orangeColor text-white ";
   const whiteColor = "bg-white text-orangeColor ";
   useEffect(() => {
     if (simpleBarRef.current) {
-      simpleBarRef.current.recalculate();
-      console.log("AAASFASF");
-      console.log(simpleBarRef.current.el);
-      scrollToTop();
+      // const myElem = document.getElementsByClassName('simplebar-scrollable-y')
+      const contentWrapper = simpleBarRef.current.el.querySelector('.simplebar-content-wrapper');
+      contentWrapper.scrollTop = contentWrapper.scrollHeight;
     }
   }, []);
 
@@ -40,7 +38,7 @@ const EventContainer = ({
       <div className={whiteColor + textClasses}>
         <SimpleBar
           ref={simpleBarRef}
-          style={{ maxHeight: maxHeight }}
+          style={{ maxHeight: maxHeight}}
           forceVisible="y"
           autoHide={true}
         >
