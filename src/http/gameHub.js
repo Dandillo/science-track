@@ -8,7 +8,7 @@ const hubConnection = new signalR.HubConnectionBuilder()
     transport: signalR.HttpTransportType.WebSockets,
   })
   .build();
-async function start() {
+export async function start() {
   try {
     await hubConnection.start();
     console.log("SignalR Connected.");
@@ -17,8 +17,6 @@ async function start() {
     setTimeout(start, 5000);
   }
 }
-
-start();
 hubConnection.onclose(async () => {
   await start();
 });
