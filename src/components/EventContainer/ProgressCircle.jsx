@@ -1,7 +1,6 @@
 ﻿import React, { useEffect } from "react";
 
-const ProgressCircle = ({ roundNumber, progress }) => {
-  const redColor = "#ff2e2e";
+const ProgressCircle = ({ roundNumber, progress, duration }) => {
   return (
     <svg
       className="progress-circle round-circle__center"
@@ -27,11 +26,13 @@ const ProgressCircle = ({ roundNumber, progress }) => {
         strokeLinecap="round"
         style={{
           strokeDasharray: "360",
-          strokeDashoffset: `${360 - (progress * 360) / 119}`,
+          strokeDashoffset: `${
+            360 - (progress * 360) / (duration + duration * 0.14)
+          }`,
           transition: "stroke-dashoffset 0.5s ease",
         }}
       >
-        {progress >= 95 ? (
+        {progress >= duration * 0.9 ? (
           <animate
             attributeType="XML"
             attributeName="fill"

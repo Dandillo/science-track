@@ -69,6 +69,7 @@ export default function Game() {
         handleAddGroupStart={handleAddGroupStart}
         description={stageDisc}
         stagePicture={stagePicture}
+        duration={currentRound != undefined ? currentRound.roundDuration : 104}
       />
       <Decisions currentRound={currentRound} />
     </GameBackground>
