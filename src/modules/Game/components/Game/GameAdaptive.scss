@@ -47,12 +47,12 @@ only screen and (min-resolution: 1.25dppx) {
   }
 
   .decisions-block {
-    @apply gap-y-[1rem];
+    @apply gap-y-[1rem] flex-col;
   }
 
   .player {
     &__img {
-      @apply h-[24rem];
+      @apply h-[24rem] flex-col;
     }
   }
 }
