@@ -6,7 +6,7 @@ only screen and (min-resolution: 1.25dppx) {
     @apply w-[530px] h-auto -translate-y-6 p-12 ml-auto mr-16;
 
     &__logo-img {
-      @apply h-[75px];
+      height: 75px;
     }
 
     &__logo-text {

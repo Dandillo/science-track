@@ -3,12 +3,12 @@ only screen and (-o-min-device-pixel-ratio: 5/4),
 only screen and (min-resolution: 120dpi),
 only screen and (min-resolution: 1.25dppx) {
   .start-button {
-    @apply h-[50px];
+    height: 50px;
   }
 
   .round-circle {
     &__left-right {
-      @apply w-[50px] h-[50px] text-[1.3rem];
+      @apply w-[50px] h-[50px] text-[1.3rem] flex-col;
     }
 
     &__center {
@@ -17,24 +17,24 @@ only screen and (min-resolution: 1.25dppx) {
   }
 
   .text-header {
-    @apply text-[1.5rem];
+    @apply text-[1.5rem] flex;
 
     &__padding {
-      @apply py-[0.6rem];
+      @apply py-[0.6rem] flex-col;
     }
   }
 
   .text-container {
-    @apply text-[15px] py-[15px];
+    @apply text-[15px] py-[15px] flex-col;
   }
 
   .solution {
     &__card-block {
-      @apply text-[15px] p-[0.4rem] border-[3px];
+      @apply text-[15px] p-[0.4rem] border-[3px] flex-col;
     }
 
     &__container {
-     @apply max-h-[28rem];
+     @apply max-h-[28rem] flex-col;
     }
   }
 

@@ -3,7 +3,7 @@ only screen and (-o-min-device-pixel-ratio: 5/4),
 only screen and (min-resolution: 120dpi),
 only screen and (min-resolution: 1.25dppx) {
   .stars-ico {
-    @apply h-[70px]
+    @apply h-[70px] flex-col;
   }
 
   .text-result {
@@ -12,11 +12,11 @@ only screen and (min-resolution: 1.25dppx) {
 
   .table {
     &__text {
-      @apply text-[20px];
+      @apply text-[20px] flex-col;
     }
 
     &__cell {
-      @apply h-[40px];
+      @apply h-[40px] flex-col;
     }
   }
 }

@@ -6,14 +6,14 @@ only screen and (min-resolution: 1.25dppx) {
     @apply mt-8;
 
     input {
-      @apply pb-1 text-xl border-b-[2px];
+      @apply pb-1 border-b-[2px] text-xl;
       transform: translateY(6px);
     }
 
     button {
       @apply text-[15px] px-5 py-1;
       &:before {
-        @apply -top-[4px] -left-[4px] -right-[4px] -bottom-[4px] border-[2px];
+        @apply -top-[4px] -left-[4px] -right-[4px] -bottom-[4px] border-[2px] bg-transparent;
       }
     }
 
