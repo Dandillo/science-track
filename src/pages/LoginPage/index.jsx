@@ -3,6 +3,6 @@ import LoginFormModule from "../../modules/LoginForm";
 import { useAuthRedirect } from "../../hooks/useAuthRedirect";
 
 export default function LoginPage() {
-  useAuthRedirect();
+  useAuthRedirect(true);
   return <LoginFormModule />;
 }

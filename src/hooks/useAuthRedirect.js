@@ -1,13 +1,12 @@
-import { useNavigate } from 'react-router-dom';
-import AuthServices from '../modules/LoginForm/services/AuthServices';
+import { useNavigate } from "react-router-dom";
+import AuthServices from "../modules/LoginForm/services/AuthServices";
 
-export function useAuthRedirect() {
-    const navigate = useNavigate('');
-    AuthServices.refresh()
-    .then(() => {
-    })
+export function useAuthRedirect(loginPage = false) {
+  const navigate = useNavigate("");
+  AuthServices.refresh()
+    .then(() => {})
     .catch((err) => {
-        console.log(err);
-        navigate('/');
+      console.log(err);
+      if (!loginPage) navigate("/");
     });
 }
