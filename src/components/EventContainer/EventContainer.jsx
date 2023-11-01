@@ -19,15 +19,11 @@ const EventContainer = ({
   const orangeColor = "bg-orangeColor text-white ";
   const whiteColor = "bg-white text-orangeColor ";
   useEffect(() => {
-    if (simpleBarRef.current) {
-      // const myElem = document.getElementsByClassName('simplebar-scrollable-y')
-      const contentWrapper = simpleBarRef.current.el.querySelector('.simplebar-content-wrapper');
-      contentWrapper.scrollTop = contentWrapper.scrollHeight;
-    }
+    
   }, []);
 
   const componentClasses = `shadow-md rounded-t-[20px] 
-  rounded-b-[30px] text-center text-[2.5rem] bg-opacity-[81%] ${className} text-header`;
+  rounded-b-[30px] text-center text-[2.5rem] bg-opacity-[81%] ${className} text-header flex flex-col` ;
 
   const textClasses = `shadow-md rounded-t-[50px]
   rounded-b-[30px] text-[1.2rem] py-[1.5rem] px-[2rem] ${textClassesExt} text-container`;
@@ -37,7 +33,7 @@ const EventContainer = ({
       <p className="py-[1rem] text-header__padding">{title}</p>
       <div className={whiteColor + textClasses}>
         <SimpleBar
-          ref={simpleBarRef}
+          // ref={simpleBarRef}
           style={{ maxHeight: maxHeight}}
           forceVisible="y"
           autoHide={true}
