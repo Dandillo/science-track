@@ -17,6 +17,11 @@ export async function start() {
     setTimeout(start, 5000);
   }
 }
+export async function stopConn() {
+  await hubConnection.stop();
+  console.log("SignalR stopped.");
+  
+}
 hubConnection.onclose(async () => {
   await start();
 });

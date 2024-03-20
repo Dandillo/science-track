@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setLocalSolution } from "../../store/GameStore";
 import SimpleBar from "simplebar-react";
 import LocalSolutionEvent from "./LocalSolutionEvent";
-import './GameAdaptive.scss';
+import "./GameAdaptive.scss";
 
 function SolutionsContainer({ currentStage, currentRound }) {
   const [data, setData] = useState([
@@ -103,7 +103,6 @@ function SolutionsContainer({ currentStage, currentRound }) {
   const [isSent, setIsSent] = useState(false);
 
   useEffect(() => {
-   
     console.log("RUND SOLUTIONT:");
     console.log(currentRound);
     console.log("STAGE:" + currentStage);
@@ -116,7 +115,7 @@ function SolutionsContainer({ currentStage, currentRound }) {
           setReady(true);
         })
         .catch((err) => console.error(err));
-  }, [currentRound,isSent]);
+  }, [currentRound, isSent]);
   useEffect(() => {
     setIsSent(false);
     dispatch(setLocalSolution(""));

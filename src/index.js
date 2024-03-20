@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import Result from "./pages/Result";
 import Test from "./pages/Test/Test";
 import Game from "./pages/Game";
+import "react-toastify/dist/ReactToastify.css";
 
 // redux + state manager
 import { Provider } from "react-redux";
@@ -27,10 +28,11 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
-import { PersistGate } from 'redux-persist/integration/react'
-import { combineReducers } from 'redux';
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { PersistGate } from "redux-persist/integration/react";
+import { combineReducers } from "redux";
+import { ToastContainer } from "react-toastify";
 
 const rootReducer = combineReducers({
   user: userStore,
@@ -38,12 +40,12 @@ const rootReducer = combineReducers({
 });
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   version: 1,
   storage,
-}
+};
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
   reducer: persistedReducer,
@@ -53,38 +55,38 @@ const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-})
+});
 
-let persistor = persistStore(store)
+let persistor = persistStore(store);
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LoginFormPage/>,
+    element: <LoginFormPage />,
   },
   {
     path: "/waiting",
-    element: <Waiting/>,
+    element: <Waiting />,
   },
   {
     path: "/game",
-    element: <Game/>,
+    element: <Game />,
   },
   {
     path: "/results/:gameId",
-    element: <Result/>,
+    element: <Result />,
   },
   {
     path: "/choose",
-    element: <Choose/>,
+    element: <Choose />,
   },
   {
     path: "/test",
-    element: <Test/>,
+    element: <Test />,
   },
   {
     path: "*",
-    element: <NotFound/>,
+    element: <NotFound />,
   },
 ]);
 
@@ -94,6 +96,7 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <RouterProvider router={router} />
+        <ToastContainer position="bottom-right" />
       </PersistGate>
     </Provider>
   </React.StrictMode>

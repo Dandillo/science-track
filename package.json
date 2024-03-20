@@ -15,9 +15,11 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
+    "react-toastify": "^10.0.5",
     "redux-persist": "^6.0.0",
     "sass": "^1.62.1",
     "simplebar-react": "^3.2.4",
+    "use-sound": "^4.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

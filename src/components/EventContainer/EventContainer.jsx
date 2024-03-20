@@ -9,6 +9,7 @@ const EventContainer = ({
   children,
   textClassesExt,
   maxHeight,
+  test,
 }) => {
   const simpleBarRef = useRef();
 
@@ -21,9 +22,12 @@ const EventContainer = ({
   useEffect(() => {
     if (simpleBarRef.current) {
       // const myElem = document.getElementsByClassName('simplebar-scrollable-y')
-      const contentWrapper = simpleBarRef.current.el.querySelector('.simplebar-content-wrapper');
-      contentWrapper.scrollTop = contentWrapper.scrollHeight;
+      const contentWrapper = document.getElementsByClassName(
+        "simplebar-content-wrapper"
+      )[0];
+      contentWrapper.scrollTop = 0;
     }
+    console.log(info);
   }, []);
 
   const componentClasses = `shadow-md rounded-t-[20px] 
@@ -38,7 +42,7 @@ const EventContainer = ({
       <div className={whiteColor + textClasses}>
         <SimpleBar
           ref={simpleBarRef}
-          style={{ maxHeight: maxHeight}}
+          style={{ maxHeight: maxHeight }}
           forceVisible="y"
           autoHide={true}
         >

@@ -1,9 +1,11 @@
-import React, {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import "./Test.scss";
 import ProgressCircle from "../../components/EventContainer/ProgressCircle";
 import EventContainer from "../../components/EventContainer/EventContainer";
-
 function Test() {
+  const [check, setCheck] = useState(
+    'Давно выяснено, что при оценке варианты).'
+  );
   return (
     <div className="test bg-blue-950">
       <input
@@ -13,20 +15,16 @@ function Test() {
         id=""
         onChange={(e) => e.preventDefault()}
       />
+      <button
+        type="button"
+        onClick={() => setCheck((prevState) => (prevState += prevState))}
+      >
+        TEST
+      </button>
       <EventContainer
         maxHeight={220}
         title={"Глобальные изменения"}
-        info={`В вашем научном коллективе преобладала дружеская атмосфера и взаимопонимание 
-              между учеными из разных стран. Вы совместно работали над перспективными научными
-              проектами, обменивались опытом и знаниями, помогали друг другу в сложных ситуациях,
-              строили научные гипотезы и проводили исследования.В этом году ситуация изменилась
-              из-за возросшей геополитической напряженности между страной 1 и другими государствами.
-              Ученые из этой страны стали отдаляться и прекращать сотрудничество с вашим научным коллективом.
-              Ученые из страны 1 перестали приезжать на ваши научные конференции и отказывались от
-              совместных научных проектов, а вы не могли отправляться к ним на стажировки.
-              Коллеги из других стран тоже испытывали трудности при взаимодействии с учеными из
-              страны 1, что привело к замедлению работы над совместными научными проектами и
-              сделало невозможным сотрудничество.`}
+        info={check}
       />
     </div>
   );
