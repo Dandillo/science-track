@@ -29,6 +29,7 @@ function PlayersList() {
     console.log(players);
     useEffect(() => {
     }, [players]);
+
     const filterPlayers = (list, text) => {
         return list.filter((player) =>
             player.userName.toLowerCase().includes(text.toLowerCase())
@@ -135,6 +136,10 @@ function PlayersList() {
                         {/*  />*/}
                         {/*</div>*/}
                         <div className="text-[20px]" onClick={() => {
+                            setPlayers(prevState =>
+                                prevState.map(pl =>
+                                    pl.userName !== player.userName)
+                            )
                             adminApi.RemoveUser(player.userName)
                                 .then(resp => {
                                     console.log('user remove', resp.data)
