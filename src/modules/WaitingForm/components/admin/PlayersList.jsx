@@ -112,7 +112,7 @@ function PlayersList() {
               className="bg-orange-300 rounded-full w-[40px] h-[40px] text-center text-[20px] "
             >
               <div className="flex justify-center items-center h-full ">
-                {player.$id}
+                {player.userId}
               </div>
             </div>
             <div className="text-[20px]"> {player.userName}</div>
