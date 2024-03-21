@@ -42,7 +42,7 @@ function PlayersList() {
     if (!file) return;
     waitingApi
       .ImportUsers(file)
-      .then((response) => toast.success("Пользователи успешно импортированы!"));
+      .then(() => toast.success("Пользователи успешно импортированы!"));
   }
   return (
     <div>
@@ -100,7 +100,7 @@ function PlayersList() {
           <div className="text-lightGrayColor">Полное имя</div>
           <div className="text-lightGrayColor">Роль</div>
           <div className="text-lightGrayColor">Сбросить пароль</div>
-          <div className="text-lightGrayColor">Удалить игрока</div>
+          {/*<div className="text-lightGrayColor">Удалить игрока</div>*/}
         </div>
         {filterPlayers(players, searchText).map((player) => (
           <div
@@ -115,9 +115,9 @@ function PlayersList() {
                 {player.userId}
               </div>
             </div>
-            <div className="text-[20px]"> {player.userName}</div>
-            <div className="text-[20px]"> {player.officialName}</div>
-            <div className="text-[20px]"> {player.role}</div>
+            <div className="text-[20px]">{player.userName}</div>
+            <div className="text-[20px]">{player.officialName}</div>
+            <div className="text-[20px]">{player.role}</div>
             <div className="text-[20px]">
               <img
                 src={refreshIcon}

@@ -52,9 +52,9 @@ function StatisticsBoard() {
           >
             назад
           </button>
-          <button className="z-10	cursor-pointer uppercase border-orangeStroke border px-[40px] py-[15px] rounded-[20px] text-orangeTextResult text-[30px]">
-            выгрузить
-          </button>
+          {/*<button className="z-10	cursor-pointer uppercase border-orangeStroke border px-[40px] py-[15px] rounded-[20px] text-orangeTextResult text-[30px]">*/}
+          {/*  выгрузить*/}
+          {/*</button>*/}
         </div>
       </RoundedContainer>
     )
