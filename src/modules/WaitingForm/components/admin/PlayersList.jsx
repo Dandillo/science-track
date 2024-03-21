@@ -108,7 +108,7 @@ function PlayersList() {
                     <div className="text-lightGrayColor">Полное имя</div>
                     <div className="text-lightGrayColor">Роль</div>
                     {/*<div className="text-lightGrayColor">Сбросить пароль</div>*/}
-                    <div className="text-lightGrayColor">Удалить игрока</div>
+                    {/*<div className="text-lightGrayColor">Удалить игрока</div>*/}
                 </div>
                 {filterPlayers(players, searchText).map((player) => (
                     <div
@@ -135,24 +135,24 @@ function PlayersList() {
                         {/*    className="block cursor-pointer hover:bg-orange-300 hover:rounded-full p-2"*/}
                         {/*  />*/}
                         {/*</div>*/}
-                        <div className="text-[20px]" onClick={() => {
-                            setPlayers(prevState =>
-                                prevState.map(pl =>
-                                    pl.userName !== player.userName)
-                            )
-                            adminApi.RemoveUser(player.userName)
-                                .then(resp => {
-                                    console.log('user remove', resp.data)
-                                })
-                        }}>
-                            <img
-                                src={binIcon}
-                                alt=""
-                                // id={game.id}
-                                // onClick={handleConnectGame}
-                                className="block cursor-pointer hover:bg-orange-300 hover:rounded-full p-2"
-                            />
-                        </div>
+                        {/*<div className="text-[20px]" onClick={() => {*/}
+                        {/*    setPlayers(prevState =>*/}
+                        {/*        prevState.map(pl =>*/}
+                        {/*            pl.userName !== player.userName)*/}
+                        {/*    )*/}
+                        {/*    adminApi.RemoveUser(player.userName)*/}
+                        {/*        .then(resp => {*/}
+                        {/*            console.log('user remove', resp.data)*/}
+                        {/*        })*/}
+                        {/*}}>*/}
+                        {/*    <img*/}
+                        {/*        src={binIcon}*/}
+                        {/*        alt=""*/}
+                        {/*        // id={game.id}*/}
+                        {/*        // onClick={handleConnectGame}*/}
+                        {/*        className="block cursor-pointer hover:bg-orange-300 hover:rounded-full p-2"*/}
+                        {/*    />*/}
+                        {/*</div>*/}
                     </div>
                 ))}
                 <Pagination
