@@ -4,13 +4,19 @@ import RoomsList from "./admin/RoomsList";
 import PlayersList from "./admin/PlayersList";
 import { waitingApi } from "../api/waitingApi";
 
-const TabsWithUnderline = ({ tabs }) => {
+const TabsWithUnderline = ({
+  tabs,
+  setInputGameId,
+  handleConnectGame,
+  userId,
+  handleCreateGame,
+}) => {
   const [activeTab, setActiveTab] = useState(tabs[0].name); // Устанавливаем первую вкладку активной по умолчанию
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
   };
-  
+
   return (
     <div className="flex flex-col">
       <div className="flex gap-5 pt-2">
@@ -26,7 +32,14 @@ const TabsWithUnderline = ({ tabs }) => {
         />
       </div>
       {/* Здесь можно добавить содержимое для каждой вкладки */}
-      {activeTab === "rooms" && <RoomsList />}
+      {activeTab === "rooms" && (
+        <RoomsList
+          handleConnectGame={handleConnectGame}
+          handleCreateGame={handleCreateGame}
+          setInputGameId={setInputGameId}
+          userId={userId}
+        />
+      )}
       {activeTab === "players" && <PlayersList />}
     </div>
   );

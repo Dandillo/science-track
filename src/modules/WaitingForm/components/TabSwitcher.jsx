@@ -4,13 +4,13 @@ import enterIcon from "../../../assets/svg/enter.svg";
 import fileIcon from "../../../assets/svg/file.svg";
 import { waitingApi } from "../api/waitingApi";
 import Pagination from "../../../components/Pagination/Pagination";
-import './TabSwitcher.scss';
+import "./TabSwitcher.scss";
 
 import { SiAddthis } from "react-icons/si";
+import { useNavigate } from "react-router-dom";
 function toHoursAndMinutes(totalMinutes) {
   const minutes = totalMinutes % 60;
   const hours = Math.floor(totalMinutes / 60);
-
   return `${padTo2Digits(hours)}:${padTo2Digits(minutes)}`;
 }
 
@@ -28,8 +28,13 @@ function TabSwitcher({ setInputGameId, handleConnectGame, handleCreateGame }) {
   const [games, setGames] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const navigator = useNavigate();
+
   const handleTabClick = (tabIndex) => {
     setActiveTab(tabIndex);
+  };
+  const handleGetResults = (e) => {
+    navigator("/results/" + e.target.id);
   };
 
   useEffect(() => {
@@ -175,7 +180,15 @@ function TabSwitcher({ setInputGameId, handleConnectGame, handleCreateGame }) {
               />
             )}
             {activeTab === 2 && <img src={binIcon} alt="" className="block" />}
-            {activeTab === 3 && <img src={fileIcon} alt="" className="block" />}
+            {activeTab === 3 && (
+              <img
+                src={fileIcon}
+                alt=""
+                className="block"
+                id={game.id}
+                onClick={handleGetResults}
+              />
+            )}
           </div>
         ))}
         <Pagination

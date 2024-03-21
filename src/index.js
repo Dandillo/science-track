@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound/NotFound";
 import Result from "./pages/Result";
 import Test from "./pages/Test/Test";
 import Game from "./pages/Game";
+import Statistics from "./pages/Statistics";
 import "react-toastify/dist/ReactToastify.css";
 
 // redux + state manager
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
   {
     path: "/results/:gameId",
     element: <Result />,
+  },
+  {
+    path: "/results/:gameId/stat-show",
+    element: <Statistics />,
   },
   {
     path: "/choose",

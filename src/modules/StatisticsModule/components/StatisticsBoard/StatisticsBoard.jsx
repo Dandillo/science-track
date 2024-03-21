@@ -1,13 +1,12 @@
 ﻿import React, { useState, useEffect } from "react";
 import star from "../../../../assets/images/Star.png";
-import ScoreRow from "../ScoreRow/ScoreRow";
 import { gameApi } from "../../../Game/api/gameApi";
-import { useNavigate, useNavigation, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import RoundedContainer from "../../../../components/RoundedContainer/RoundedContainer";
-import "../ResultAdaptive.scss";
 import Button from "../../../../ui/Button";
+import PlayerChart from "../PlayerChart/PlayerChart";
 
-function ResultScoreboard() {
+function StatisticsBoard() {
   const [scoreTableData, setScoreTableData] = useState([]);
   const { gameId } = useParams();
   const navigator = useNavigate();
@@ -19,14 +18,12 @@ function ResultScoreboard() {
       setIsReady(true);
     });
   }, []);
-  const handleStatShow = () => {
-    // Handle click for "My Statistics" button
-    console.log("My Statistics button clicked");
-    navigator(`/results/${gameId}/stat-show`);
+  const handleBackButton = () => {
+    navigator(-1);
   };
   return (
     scoreTableData && (
-      <RoundedContainer extraClasses="rounded-[80px] items-center bg-gray-900 gap-[20px] justify-between mb-10 pb-10">
+      <RoundedContainer extraClasses="rounded-[80px] items-center bg-gray-900 gap-[10px] justify-between mb-10 pb-10">
         <div className="items-center flex flex-col">
           <div className="flex h-[100px] stars-ico mt-[10px]">
             <img
@@ -42,37 +39,21 @@ function ResultScoreboard() {
             />
           </div>
           <p className="bg-orange-500 bg-clip-text text-transparent text-[70px] text-result">
-            РЕЗУЛЬТАТЫ
+            СТАТИСТИКА
           </p>
-          <div className="grid grid-cols-results gap-y-3 text-center">
-            <ScoreRow
-              place={"Место"}
-              name={"Имя"}
-              social={"Соц. статус"}
-              finance={"Финансы"}
-              administrative={"Адм. ресурс"}
-            />
-            {scoreTableData.map((row, place) => (
-              <ScoreRow
-                key={row.user}
-                place={place + 1}
-                name={row.officialName}
-                social={row.socialStatus}
-                finance={row.financeStatus}
-                administrative={row.administrativeStatus}
-              />
-            ))}
+          <div className="grid z-10">
+            <PlayerChart gameId={gameId}/>
           </div>
         </div>
         <div className="flex justify-between gap-10">
-          <a
-            onClick={handleStatShow}
+          <button
+            onClick={handleBackButton}
             className="z-10	cursor-pointer uppercase border-orangeStroke border px-[40px] py-[15px] rounded-[20px] text-orangeTextResult text-[30px]"
           >
-            моя статистика
-          </a>
-          <button className="z-10 cursor-pointer uppercase border-orangeStroke border px-[40px] py-[15px] rounded-[20px] text-orangeTextResult text-[30px]">
-            выход
+            назад
+          </button>
+          <button className="z-10	cursor-pointer uppercase border-orangeStroke border px-[40px] py-[15px] rounded-[20px] text-orangeTextResult text-[30px]">
+            выгрузить
           </button>
         </div>
       </RoundedContainer>
@@ -80,4 +61,4 @@ function ResultScoreboard() {
   );
 }
 
-export default ResultScoreboard;
+export default StatisticsBoard;

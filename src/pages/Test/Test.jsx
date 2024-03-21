@@ -4,7 +4,7 @@ import ProgressCircle from "../../components/EventContainer/ProgressCircle";
 import EventContainer from "../../components/EventContainer/EventContainer";
 function Test() {
   const [check, setCheck] = useState(
-    'Давно выяснено, что при оценке варианты).'
+    "Давно выяснено, что при оценке варианты)."
   );
   return (
     <div className="test bg-blue-950">

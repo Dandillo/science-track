@@ -11,6 +11,8 @@ module.exports = {
       },
       colors: {
         orangeColor: "#fb7a30",
+        orangeStroke: "#FF805E",
+        orangeTextResult: "#FF8B52",
         orangeLighterColor: "#FF9100",
         orangeBGColor: "#ffb379",
         orangeLightBGColor: "#FFCC9EE0",
