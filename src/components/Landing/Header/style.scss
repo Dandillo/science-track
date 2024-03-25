@@ -1,0 +1,24 @@
+﻿.header-container {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 35px;
+}
+.links {
+	list-style-type: none;
+	display: flex;
+	gap: 10px;
+}
+.nav-link {
+	text-decoration: none;
+	font-size: 30px;
+	color: #FFEFE5;
+	text-align: center;
+}
+.nav-item {
+	padding: 5px 15px;
+	&:hover {
+		background: rgba(217, 217, 217, 0.3);
+		border-radius: 50px;
+		animation: background ease-in 2s;
+	}
+}

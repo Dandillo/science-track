@@ -34,6 +34,7 @@ import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
 import { combineReducers } from "redux";
 import { ToastContainer } from "react-toastify";
+import Landing from "./pages/Landing";
 
 const rootReducer = combineReducers({
   user: userStore,
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
   {
     path: "/choose",
     element: <Choose />,
+  },
+  {
+    path: '/promo',
+    element: <Landing/>
   },
   {
     path: "/test",
